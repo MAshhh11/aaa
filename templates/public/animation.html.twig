@@ -1,0 +1,371 @@
+{% extends 'public/base.html.twig' %}
+{% set page = "animation" %}
+
+{% block title %}Le secteur de l’animation - L’animateur autodidacte accompagné{% endblock %}
+{% block main %}
+<div class="container">
+
+
+
+
+  <div class="row animation">
+    <div class="col-12">
+      <p class="overTitle text-blue">le secteur de l’animation</p>
+      <h2>Les chiffres du cinéma d'animation en france<span class="text-yellow"> •</span></h2>
+      <p>chiffres en 2019 (source AUDIENS/CNC) :</p>
+    </div>
+  <div class="row">
+    {%for figure in figures %}
+
+    <div class="col-6 col-md-4 col-lg-2 compteurContainer">
+      <div class="compteur">
+        <span class="odometer" data-counter="{{figure.amount}}">0</span>
+      </div>
+      <div class="text-center CompteurTitle">
+        <p class="font-bold">{{figure.title}}</p>
+        <p>{{figure.text}}</p>
+       
+      </div>
+    </div>
+
+{% endfor %}
+  </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="container organigrammeContainer">
+      <div class="row">
+        <div class="col-12 orgaTitle">
+          <p class="overTitle text-blue">quel professionnel ?</p>
+          <h2>Organigrammes des métiers<span class="text-yellow"> •</span></h2>
+        </div>
+        <div class="col-12">
+          <div class="orgaCarousel owl-carousel owl-theme">
+            <div class="item">
+              <img src="{{ asset('assets/img/front/organigramme_fabrication.png')}}" srcset="{{ asset('assets/img/front/organigramme_fabrication@2x.png')}} 2x, {{ asset('assets/img/front/organigramme_fabrication@3x.png')}} 3x" id="orgafab" data-orga="0" alt="organigramme fabrication">
+            </div>
+            <div class="item">
+              <img src="{{ asset('assets/img/front/organigramme_jeu.png')}}" srcset="{{ asset('assets/img/front/organigramme_jeu@2x.png')}} 2x, {{ asset('assets/img/front/organigramme_jeu@3x.png')}} 3x" id="orgaJeu" data-orga="1" alt="organigramme jeu">
+            </div>
+            <div class="item">
+              <img src="{{ asset('assets/img/front/organigramme_animation.png')}}" srcset="{{ asset('assets/img/front/organigramme_animation@2x.png')}} 2x, {{ asset('assets/img/front/organigramme_animation@3x.png')}} 3x" id="orgaAnim" data-orga="2" alt="organigramme animation">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container navOrgaContainer">
+      <div class="row">
+        <div class="navOrga">
+          <div class="orgaPrev">
+            <img src="{{ asset('assets/img/front/fleche_gauche.png')}}" srcset="{{ asset('assets/img/front/fleche_gauche@2x.png')}} 2x, {{ asset('assets/img/front/fleche_gauche@3x.png')}} 3x" alt="fleche gauche">
+          </div>
+          <div class="orgaNext">
+            <img src="{{ asset('assets/img/front/fleche_droite.png')}}" srcset="{{ asset('assets/img/front/fleche_droite@2x.png')}} 2x, {{ asset('assets/img/front/fleche_droite@3x.png')}} 3x" alt="fleche droite">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid ">
+  <div class="row bg-darkGrey patternBlue list justify-content-center">
+    <div class="col-auto">
+      <div class="cstBtnBorderTrame text-yellow border-yellow btnList" data-list="ecole">
+        recevoir la liste des écoles
+      </div>
+      <div class="cstBtnBorderTrame text-blue border-blue btnList" data-list="studio">
+        recevoir la liste des studios
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container presse">
+
+  <div class="row ">
+    <div class="col-12">
+      <p class="overTitle text-blue">le metier</p>
+      <h2>La presse en parle<span class="text-yellow"> •</span></h2>
+    </div>
+  </div>
+  {# article desktop #}
+  <div class="row pressArticles">
+    <div class="col-4">
+ {% for article in articles %} 
+   {% if article.rank == 1 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+     {% for article in articles %} 
+   {% if article.rank == 2 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+    </div>
+    <div class="col-4">
+      {% for article in articles %} 
+   {% if article.rank == 3 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+      {% for article in articles %} 
+   {% if article.rank == 4 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+    </div>
+    <div class="col-4">
+      {% for article in articles %} 
+   {% if article.rank == 5 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+     {% for article in articles %} 
+   {% if article.rank == 6 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+    </div>
+  </div>
+  {# article tab #}
+  <div class="row pressArticlesTab">
+    <div class="col-6">
+      {% for article in articles %} 
+   {% if article.rank == 1 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+       {% for article in articles %} 
+   {% if article.rank == 2 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+       {% for article in articles %} 
+   {% if article.rank == 3 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+    </div>
+    <div class="col-6">
+       {% for article in articles %} 
+   {% if article.rank == 4 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+       {% for article in articles %} 
+   {% if article.rank == 5 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %}
+     {% for article in articles %} 
+   {% if article.rank == 6 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %}  
+    </div>
+  </div>
+  {# article mobile #}
+  <div class="row pressArticlesMobile">
+    <div class="col-12">
+       {% for article in articles %} 
+   {% if article.rank == 1 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+      {% for article in articles %} 
+   {% if article.rank == 2 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+      {% for article in articles %} 
+   {% if article.rank == 3 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+      {% for article in articles %} 
+   {% if article.rank == 4 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %} 
+      {% for article in articles %} 
+   {% if article.rank == 5 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %}
+     {% for article in articles %} 
+   {% if article.rank == 6 %}
+      <div class="pressContainer">
+        <div class="pressAContainer">
+          <a href="{{ article.website_link }}" target="_blank" class="cstBtnBorderTrame text-yellow border-yellow">consulter l'article</a>
+        </div>
+        <p class="presseTitle">{{ article.title }}</p>
+        <p class="presseName">{{ article.author }}</p>
+      </div>
+      {% endif %}
+     {% endfor %}  
+    </div>
+  </div>
+</div>
+
+<div class="popUpList {% if list %}shown{% endif %}">
+
+  <div class="container">
+    <div class="popUpClose">
+      <span></span>
+      <span></span>
+    </div>
+    {% if list == 'valid' %}
+      <p class="reponseList">Votre demande a bien été pris en compte.</p>
+    {% else %}
+      <p class="text-white text-center text-">Veuillez renseigner ce formulaire pour recevoir la liste</p>
+      {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center flex-column flex-md-row align-items-center">
+              {{ form_widget(form.firstname) }}
+              {{ form_widget(form.lastname) }}
+            </div>
+            <div class="col d-flex justify-content-center">
+                {{ form_widget(form.email) }}
+
+                <button type="submit" name="button" class="cstSubmit"> <img src="{{ asset('assets/img/front/submit.png') }}" srcset="{{ asset('assets/img/front/submit@2x.png')}} 2x, {{ asset('assets/img/front/submit@3x.png')}} 3x" alt="fleche"> </button>
+            </div>
+        </div>
+      {{ form_end(form) }}
+    {% endif %}
+
+
+  </div>
+</div>
+
+<div class="popUpOrga">
+  <div class="popUpClose">
+    <span></span>
+    <span></span>
+  </div>
+  <div class="popUpOrgaCaroussel owl-carousel owl-theme">
+    <div class="item">
+      <img src="{{ asset('assets/img/front/organigramme_fabrication@2x.png')}}" srcset="{{ asset('assets/img/front/organigramme_fabrication@2x.png')}} 2x, {{ asset('assets/img/front/organigramme_fabrication@3x.png')}} 3x" id="popUpOrgafab" alt="organigramme fabrication">
+    </div>
+    <div class="item">
+      <img src="{{ asset('assets/img/front/organigramme_jeu@2x.png')}}" srcset="{{ asset('assets/img/front/organigramme_jeu@2x.png')}} 2x, {{ asset('assets/img/front/organigramme_jeu@3x.png')}} 3x" id="popUpOrgaJeu" alt="organigramme jeu">
+    </div>
+    <div class="item">
+      <img src="{{ asset('assets/img/front/organigramme_animation@2x.png')}}" srcset="{{ asset('assets/img/front/organigramme_animation@2x.png')}} 2x, {{ asset('assets/img/front/organigramme_animation@3x.png')}} 3x" id="popUpOrgaAnim" alt="organigramme animation">
+    </div>
+  </div>
+  <div class="navPopUpOrga">
+    <div class="orgaPrev">
+      <img src="{{ asset('assets/img/front/fleche_gauche.png')}}" srcset="{{ asset('assets/img/front/fleche_gauche@2x.png')}} 2x, {{ asset('assets/img/front/fleche_gauche@3x.png')}} 3x" alt="fleche gauche">
+    </div>
+    <div class="orgaNext">
+      <img src="{{ asset('assets/img/front/fleche_droite.png')}}" srcset="{{ asset('assets/img/front/fleche_droite@2x.png')}} 2x, {{ asset('assets/img/front/fleche_droite@3x.png')}} 3x" alt="fleche droite">
+    </div>
+  </div>
+</div>
+{% endblock %}

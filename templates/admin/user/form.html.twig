@@ -1,0 +1,152 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'administration' %}
+{% set submenu = 'administration_user' %}
+
+    {% if form.vars.value.id is not null %}
+        {% set page_name = 'Modification de l\'étudiant '~form.vars.value.lastname~' '~form.vars.value.firstname %}
+    {% else %}
+        {% set page_name = 'Nouvel Etudiant' %}
+    {% endif %}
+    
+    {% set breadcrumbs = [
+            {"title": "Administration", 'url' : ""},
+            {"title": "Liste des Etudiants", 'url' : path('user_index') },
+            {"title": page_name, 'url' : ""},
+    ] %}
+
+{% block body %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate','class': 'needs-validation', 'autocomplete': 'off'}}) }}
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{page_name}}</h3>
+                </div>
+                    <div class="col text-right">
+                              <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false" title="" data-original-title="Enregistrer le formulaire">
+                                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                            </button>
+                        {% if form.vars.value.id is defined and form.vars.value.id %}
+{#                              <a href="{{ path('user_form_avatar', {'userid' : form.vars.value.id}) }}" class="btn btn-sm btn-primary"><i class="fas fa-portrait"></i> Modifier la photo</a>#}
+                              <a href="javascript:void(0);" class="btn btn-sm btn-danger confirmDeleteBox"
+                                data-message="Souhaitez-vous supprimer définitivement cet utilisateur ?<br/> Toutes les données rattachées à cet utilisateur seront automatiquement supprimées."
+                                 data-token="{{ csrf_token('delete'~form.vars.value.id) }}"
+                                 data-url="{{ path('user_delete', {'id': form.vars.value.id}) }}" ><i class="fa fa-trash"></i> Supprimer</a>
+                        {% endif %}
+                    </div>
+            </div>
+        </div>
+
+      <div class="card-body">
+        <h6 class="heading-small text-muted mb-4">Informations personnelles</h6>
+
+          <div class="row">
+              <div class="col-lg-6">
+                  {{ form_widget(form.lastname) }}
+              </div>
+              <div class="col-lg-6">
+                  {{ form_widget(form.firstname) }}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  {{ form_widget(form.email) }}
+              </div>
+              <div class="col-lg-6">
+                  {{ form_widget(form.phone) }}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-6">
+                  {{ form_widget(form.password.first) }}
+              </div>
+              <div class="col-lg-6">
+                  {{ form_widget(form.password.second) }}
+              </div>
+          </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_widget(form.isActive) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_widget(form.sendEmail) }}
+                </div>
+            </div>
+        </div>
+        {% if form.vars.value.id %}
+            <hr/>
+        <div class="card-body">
+
+            <div class="card border-0 py-3">
+                <div class="row px-5">
+
+                    <div class="col-6 mb-3">
+                        <h6 class="heading-small text-muted">Formations</h6>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="{{ path('user_formation' , { user : form.vars.value.id }) }}" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Ajouter une formation">
+                            <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
+                            <span class="btn-inner--text">Ajouter</span>
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush table-striped table-hover table-actions">
+                            <thead class="thead-light">
+                                <tr>
+                                    <td> Formation </td>
+                                    <td> Formation Actuelle </td>
+                                    <td> Date début formation </td>
+                                    <td> Actions </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% if formations is not null %}
+                            {% for formation in formations %}
+                            
+                                <tr>
+                                    <td>{{ formation.title }}</td>
+                                    <td>{% if formation.is_current == 1 %}oui {% else %}non{% endif %}</td>
+                                    <td>{{ formation.created_at|date('d/m/Y')}}</td>
+                                    <td><a href="javascript:void(0);" class="btn btn-sm btn-danger confirmDeleteBox"
+                           data-message="Souhaitez-vous supprimer définitivement la formation de cet utilisateur ?<br/> Toutes les données rattachées à cette formation seront automatiquement supprimées."
+                           data-token="{{ csrf_token('delete'~formation.id) }}"
+                           data-url="{{ path('userformation_delete', {'id': formation.id}) }}"><i
+                                    class="fa fa-trash"></i> Supprimer</a></td>
+                                </tr>
+                            {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+      <div class="card-footer">
+          <button class="btn btn-icon btn-success" type='submit' >
+                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                <span class="btn-inner--text">Enregistrer</span>
+            </button>
+
+          <a class="btn btn-icon btn-sm" href='{{path("user_index")}}'>
+                <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                <span class="btn-inner--text">Annuler</span>
+            </a>
+
+      </div>
+    </div>
+
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent()}}
+{% endblock %}

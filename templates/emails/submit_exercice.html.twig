@@ -1,0 +1,18 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Dépot exercice {{ exercice.title }}
+{%  endblock %}
+{% block content %}
+    {% if isAdmin == false %}
+    <p>Bonjour,</p>
+    <p>Votre exercice {{ exercice.title }} a bien été déposé sur la plateforme l'Animateur Autodidacte Accompagné.</p>
+    <p>Nous reviendrons rapidement vers vous avec une correction,</p>
+    <p>Cordialement,</p>
+    {% else %}
+    <p>Bonjour,</p>
+    <p>L'élève {{ user.firstname}} {{ user.lastname}} a déposé un rendu pour l'exercice {{ exercice.title }} sur la plateforme l'Animateur Autodidacte Accompagné.</p>
+    <p>Rendez-vous sur votre espace pour lui proposer une correction</p>
+    <p>Cordialement,</p>
+    {% endif %}
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

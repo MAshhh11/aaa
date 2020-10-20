@@ -1,0 +1,9 @@
+# config/packages/vich_uploader.yaml or app/config/config.yml
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        product_image:
+            uri_prefix: /clubs/logos
+            upload_destination: '%kernel.project_dir%/public/uploads/clubs/logos'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

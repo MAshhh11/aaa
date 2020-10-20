@@ -1,0 +1,111 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'student_course' %}
+{% if formation is defined  and formation is not null %}
+    {% set submenu = 'student_course_'~formation.id %}
+    {% set page_name = formation.title %}
+{% else %}
+    {% set page_name = '' %}
+{% endif %}
+
+{% set breadcrumbs = [
+    {"title": "Ma formation", 'url' : ""},
+    {"title": page_name, 'url' : ""},
+] %}
+
+{% block body %}
+
+    <div class="card shadow">
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col-md-6">
+                    <h1 class="mb-0 text-blue">{{page_name}}</h1>
+                </div>
+                {% if formation is defined  and formation is not null %}
+                <div class="col-md-6">
+                    <h3 class="mb-0 text-right">{{formation.duration}}</h3>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if formation is defined and formation is not null %}
+        <div class="card-body justify-content-center d-flex flex-column align-items-center">
+            <div class="p-2 w-75">
+                <h2>Ma progression  <span class="text-yellow"> •</span></h2>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: {{ progress }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            {% set k = 1 %}
+            {% for course in courses %}
+            <div class="card shadow p-2 w-75" id="courseContainer">
+                <div class="row px-4 py-2 border-bottom d-flex justify-content-center align-items-center">
+                    <div class="col-12 col-sm-1">
+                        <i class="far fa-edit fa-2x"></i>
+                    </div>
+                    <div class="col-12 col-sm-6 text-left">
+                        <h4>{{  course.title }}</h4>
+                    </div>
+                    <div class="col-12 col-sm-5 text-right d-flex flex-row justify-content-end align-items-center">
+                        <div style="height: 2rem !important;">
+                            <img src="{{ asset('assets/img/front/jours.png') }}" alt="icone_bulle" class="w-auto h-100 bg-">
+                        </div>
+                        <div class="courseDuration">
+                            <p class="ml-1 mb-0">{{ course.duration }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% set y = 1 %}
+                {% for exercice in exercices %}
+                    {% if exercice.course_id == course.id %}
+                    <div class="row p-2 d-flex justify-content-center align-items-center">
+                        <div class="col-sm-1">
+                        </div>
+                        <div class="col-12 col-sm-4 text-left">
+                            <h5>{{ exercice.title }}</h5>
+                        </div>
+                        <div class="col-12 col-sm-3 text-left">
+                            <h5>difficulté {{ exercice.difficulty }}</h5>
+                        </div>
+                        <div class="col-12 col-sm-2 text-left">
+                            <h5>{{ exercice.duration }}</h5>
+                        </div>
+                        {% if exercice.id in lockedExercices %}
+                            <div class="col-12 col-sm-2 md-btn-group">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            {% else %}
+                            <div class="col-12 col-sm-2 md-btn-group">
+                                <a href="{{ path('student_exercice', {id: exercice.id}) }}" class="btn btn-icon-only {% if exercice.id in exercicesDone %}btn-secondary{% else %}btn-primary{% endif %} btn-sm" data-toggle="tooltip" data-original-title="{% if exercice.id in exercicesDone %}voir l'exercice {% else %}faire l'exercice{% endif %}">{% if exercice.id in exercicesDone %}<i class="fas fa-eye"></i> {% else %}<i class="fas fa-pencil-alt"></i></i>{% endif %}</a>
+                            </div>
+                            {% endif %}
+                        {% set  y= y + 1 %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% set  k = k + 1 %}
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="card-body justify-content-center d-flex flex-column align-items-center w-100">
+            <div class="col-12 text-center py-5">
+                <h1>Vous ne suivez actuellement aucune formation </h1>
+            </div>
+            <div class="col-12 text-center pb-5">
+                <a href="{{ path('formation_choice') }}" class="btn btn-primary btn-main">M'inscrire à une formation</a>
+            </div>
+        </div>
+        {% endif %}
+
+
+
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+{% endblock %}
+

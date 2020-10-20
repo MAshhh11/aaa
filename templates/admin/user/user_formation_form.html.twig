@@ -1,0 +1,70 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'administration' %}
+{% set submenu = 'administration_user' %}
+
+
+        {% set page_name = user.firstname ~" "~ user.lastname %}
+
+    
+    {% set breadcrumbs = [
+            {"title": "Administration", 'url' : ""},
+            {"title": "Liste des Elèves", 'url' : path('user_index') },
+            {"title": page_name, 'url' : ""},
+    ] %}
+
+{% block body %}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate','class': 'needs-validation', 'autocomplete': 'off'}}) }}
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{page_name}}</h3>
+                </div>
+                    <div class="col text-right">
+                              <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false" title="" data-original-title="Enregistrer le formulaire">
+                                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                            </button>
+
+                    </div>
+            </div>
+        </div>
+
+      <div class="card-body">
+        <h6 class="heading-small text-muted mb-4">Rattacher cet élève à une formation</h6>
+
+          <div class="row">
+              <div class="col-lg-6">
+                  {{ form_widget(form.formation) }}
+              </div>
+              <div class="col-lg-12">
+                    {{ form_widget(form.is_current) }}
+              </div>
+          </div>
+
+        </div>
+      <div class="card-footer">
+          <button class="btn btn-icon btn-success" type='submit' >
+                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                <span class="btn-inner--text">Enregistrer</span>
+            </button>
+
+          <a class="btn btn-icon btn-sm" href='{{path("user_index" , {id :user.id})}}'>
+                <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                <span class="btn-inner--text">Annuler</span>
+            </a>
+
+      </div>
+    </div>
+
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent()}}
+{% endblock %}

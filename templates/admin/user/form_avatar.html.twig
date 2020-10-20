@@ -1,0 +1,209 @@
+{% extends 'base.html.twig' %}
+
+{% set menu = 'secretary' %}
+{% set submenu = 'secretary_user' %}
+
+    {% set page_name = "Modification de la photo"%}
+    
+    {% set breadcrumbs = [
+            {"title": "Secrétariat", 'url' : ""},
+            {"title": "Liste des membres", 'url' : path('user_index') },
+            {"title": 'Modification du membre '~item.lastname~' '~item.firstname, 'url' : path('user_form', {'id':item.id}) },
+            {"title": page_name, 'url' : ""},
+    ] %}
+
+{% block body %}
+    
+<link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+<style>
+    .box {
+        display:none;
+    }
+    .img-container, .img-preview {
+    background-color: #f7f7f7;
+    text-align: center;
+    width: 100%;
+}
+.img-container {
+    margin-bottom: 1rem;
+    max-height: 497px;
+    min-height: 200px;
+}
+
+@media (min-width: 768px) {
+.img-container {
+    min-height: 497px;
+}
+}
+</style>
+          
+{{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'needs-validation', 'autocomplete': 'off', 'id':'form-avatar'}}) }}
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{page_name}}</h3>
+                </div>
+            </div>
+        </div>
+
+      <div class="card-body">
+
+        <div class="row">
+            <div class="col-9">                  
+                  <div class="img-container">
+                      {% if item.avatarOriginal %}
+                            <img id="image" src="{{ asset("uploads/users/avatars/"~item.avatarOriginal) }}">
+                      {% else %}
+                            <img id="image" src="{{ asset("assets/img/avatar.jpg") }}">
+                      {% endif %}
+                  </div>
+            </div>
+          
+            <div class="col-3 text-center">
+              <div class="docs-preview">
+                <div class="img-preview img-preview-lg"></div>
+                <div class="img-preview img-preview-md"></div>
+                <div class="img-preview img-preview-sm"></div>
+              </div>
+            </div>
+        </div>
+                  
+        <div class="row mt-2">
+            <div class="col-md-12 docs-buttons">
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom sur la photo">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Zoom sur la photo">
+                    <span class="fa fa-search-plus"></span>
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Dézoom sur la photo">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Dézoom sur la photo">
+                    <span class="fa fa-search-minus"></span>
+                  </span>
+                </button>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Bouger vers la gauche">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Bouger vers la gauche">
+                    <span class="fa fa-arrow-left"></span>
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Bouger vers la droite">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Bouger vers la droite">
+                    <span class="fa fa-arrow-right"></span>
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Bouger vers le haut">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Bouger vers le haut">
+                    <span class="fa fa-arrow-up"></span>
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Bouger vers le bas">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Bouger vers le bas">
+                    <span class="fa fa-arrow-down"></span>
+                  </span>
+                </button>
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotation vers la gauche">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Rotation vers la gauche">
+                    <span class="fa fa-undo"></span>
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotation vers la droite">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Rotation vers la droite">
+                    <span class="fa fa-redo"></span>
+                  </span>
+                </button>         
+              </div>
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Inverser horizontalement">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Inverser horizontalement">
+                    <span class="fa fa-arrows-h"></span>
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Inverser verticalement">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Inverser verticalement">
+                    <span class="fa fa-arrows-v"></span>
+                  </span>
+                </button>
+              </div>
+
+              <div class="btn-group" id='actions'>
+                <button type="button" class="btn btn-primary" data-method="reset" title="Remettre la zone de sélection">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Remettre la zone de sélection">
+                    <span class="fa fa-sync"></span>
+                  </span>
+                </button>                  
+                <button type="button" class="btn btn-primary" data-method="reset" title="Remettre la photo par défaut" id="resetPicture">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Remettre la photo par défaut">
+                   <i class="fas fa-backspace"></i>
+                  </span>
+                </button>
+                <label class="btn btn-primary btn-upload mb-0" for="user_avatar_avatar" title="Envoyer une photo de mon ordinateur">
+                  {#<input type="file" class="sr-only" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">#}
+                  {{ form_widget(form.avatar) }}
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Envoyer une photo de mon ordinateur">
+                    <span class="fa fa-upload"></span>
+                  </span>
+                </label>
+                <button type="button" class="btn btn-success docs-buttons" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                  <span class="docs-tooltip" data-toggle="tooltip" data-animation="false" title="" data-original-title="Enregistrer  la sélection">
+                    <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    <span class="btn-inner--text">Enregistrer</span>
+                  </span>
+                </button>
+              </div>
+
+            </div>
+        
+        
+      </div> 
+    </div>
+              
+    
+<div class="card-footer">
+          
+    <input type="hidden" id="generateCanvas" name="avatar" />
+    <input type="hidden" id="resetCanvas" name="reset" value="0" />
+          
+    <a class="btn btn-icon btn-sm" href='{{ path('user_form', {'id':item.id}) }}'>
+        <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+        <span class="btn-inner--text">Annuler</span>
+    </a>
+
+</div>
+              
+    </div>
+
+    {{ form_end(form) }}
+    
+{% endblock %}
+
+{% block javascripts %}
+{{ parent()}}
+
+  {#<script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>#}
+ {#<script src="  https://unpkg.com/cropperjs@1.5.6/dist/cropper.js"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/4.0.0/cropper.min.js"></script>#}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://fengyuanchen.github.io/cropperjs/js/cropper.js"></script>
+<script src="https://fengyuanchen.github.io/cropperjs/js/cropper.js"></script>
+<script src="{{ asset('assets/vendor/cropper/plugins_image_cropper.js') }}"></script>     
+
+    <script>
+        $('#resetPicture').click(function() {
+            $('#resetCanvas').val(1);
+            $('#image').cropper('replace', '{{ asset("assets/img/avatar.jpg") }}')
+        });
+    </script>
+{% endblock %}

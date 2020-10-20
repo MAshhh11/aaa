@@ -1,0 +1,12 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Un élève vient de terminer sa formation
+{%  endblock %}
+{% block content %}
+    <p>Bonjour,</p>
+    
+        <p>L'élève {{ user.firstname }} {{ user.lastname }} vient de terminer sa formation sur la plateforme.</p>
+        <p> Si vous souhaitez la/le contacter son e-mail est le suivant : {{ user.email }} </p>
+ 
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

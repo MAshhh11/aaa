@@ -1,0 +1,16 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Validation exercice {{ exercice.title }}
+{%  endblock %}
+{% block content %}
+    <p>Bonjour,</p>
+    {% if validation == 1 %}
+    <p>Votre rendu pour l'exercice {{ exercice.title }} a été validé sur votre plateforme l'Animateur Autodidacte Accompagné.</p>
+    <p>Rendez-vous sur votre plateforme pour passer à l'exercice suivant !</p>
+    {% else %}
+    <p>Votre rendu pour l'exercice {{ exercice.title }} n'a pas été accepté sur votre plateforme l'Animateur Autodidacte Accompagné.</p>
+    <p>Rendez-vous sur votre plateforme pour soumettre un nouveau rendu !</p>
+    {% endif %}
+    <p>Cordialement,</p>
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

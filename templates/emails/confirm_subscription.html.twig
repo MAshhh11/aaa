@@ -1,0 +1,12 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Confirmation de votre inscription sur la plateforme l'Animateur Autodidacte Accompagné
+{%  endblock %}
+{% block content %}
+    <p>Bonjour {{ student.firstname }} {{ student.lastname }},</p>
+
+        <p>Bienvenue sur la plateforme L'Animateur Autodidacte Accompagné !</p>
+        <p>Rendez-vous dès à présent sur votre espace en suivant le lien ci-dessous:</p>
+    <p class="text-center"><a href="https://aaanim.fr/espace-etudiant/connexion">Cliquez ici !</a></p>
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

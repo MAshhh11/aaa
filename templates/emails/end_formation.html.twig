@@ -1,0 +1,14 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Fin de Formation {{ formation.title }}
+{%  endblock %}
+{% block content %}
+    <p>Bonjour,</p>
+    
+    <p>Félicitations ! Votre formation {{ formation.title }} a été validée sur votre plateforme l'Animateur Autodidacte Accompagné.</p>
+    <p>Rendez-vous sur votre plateforme démarrer une autre formation !</p>
+    <p class="text-center"><a href="https://aaanim.fr/espace-etudiant/inscription/formations/">Cliquez ici !</a></p>
+    
+    <p>Cordialement,</p>
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

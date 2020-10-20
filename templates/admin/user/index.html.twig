@@ -1,0 +1,79 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'administration' %}
+{% set submenu = 'administration_user' %}
+
+{% set page_name = 'Liste des Abonnés' %}
+    
+{% set breadcrumbs = [
+        {"title": "Administration", 'url' : ""},
+        {"title": page_name, 'url' : ""},
+] %}
+
+{% block body %}
+    
+    <div class="card shadow">
+
+      <div class="card-header border-0">
+          <div class='row align-items-center'>
+              <div class="col">
+                  <h3 class="mb-0">{{page_name}}</h3>
+              </div>          
+              <div class="col text-right">
+                  <a href="{{path('user_form')}}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Ajouter un Etudiant</a>
+              </div>
+          </div>
+      </div>
+              
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush dataTable" id="dt_default">
+              <thead class="thead-light">
+                <tr role="row" class="filter">
+                    <td>
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control table-filter" id="col0_filter" data-filter="0">
+                                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control table-filter" id="col1_filter" data-filter="1">
+                                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control table-filter" id="col2_filter" data-filter="2">
+                                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                  <tr>
+                      <th class="sorting">Nom</th>
+                      <th class="sorting">Prénom</th>
+                      <th style="width:150px;">Actions</th>
+                  </tr>
+              </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+                    
+{% endblock %}
+
+{% block javascripts %}
+{{ parent()}}
+    <script>    
+        var tableUrl = "{{ path('user_datas')}}";
+        var tableSortingDefault = [[0, "asc" ]];
+        var tableNotOrderable = [2];
+    </script>
+    {% include 'admin/components/js_datatable.html.twig' %}    
+{% endblock %}
+

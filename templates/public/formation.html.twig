@@ -1,0 +1,298 @@
+{% extends 'public/base.html.twig' %}
+{% set page = "formation" %}
+
+{% block title %}Les différentes formations - L’animateur autodidacte accompagné{% endblock %}
+
+{% block main %}
+<div class="container formBtnContainer">
+  <div class="formTop">
+    <div class="patternBlue100">
+
+    </div>
+    <div class="formNavContainer">
+      <div class="formNav">
+        <div class="formBtn" data-nbForm="1">
+          Formation Année 1
+        </div>
+      </div>
+      <div class="formNav">
+        <div class="formBtn" data-nbForm="2">
+          Formation Année 2
+        </div>
+      </div>
+      <div class="formNav">
+        <div class="formBtn" data-nbForm="3">
+          Modules Thématiques
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row position-relative formRow">
+    <div class="form form1" data-nbform="1">
+      <img src="{{ asset('assets/img/front/formations01.jpg') }}" alt="">
+      <div class="formationTitle">
+        Formation Année 1
+      </div>
+    </div>
+
+    <div class="form form2" data-nbform="2">
+      <img src="{{ asset('assets/img/front/formations02.jpg') }}" alt="">
+      <div class="formationTitle">
+        Formation Année 2
+      </div>
+    </div>
+
+    <div class="form form3" data-nbform="3">
+      <img src="{{ asset('assets/img/front/formations03.jpg') }}" alt="">
+      <div class="formationTitle">
+        Modules Thématiques
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="formContent" data-nbform="1">
+      <div class="patternBlue100">
+        <div class="blockLeft">
+          <div class="formHeure">
+            <img src="{{ asset('assets/img/front/heures.png') }}" srcset="{{ asset('assets/img/front/heures@2x.png')}} 2x, {{ asset('assets/img/front/heures@3x.png')}} 3x" alt="heures">
+            <div class="leftText">
+              <h3>Nombres d’heures</h3>
+              <p>À venir</p>
+            </div>
+          </div>
+          <div class="formPrix">
+            <img src="{{ asset('assets/img/front/tarifs.png') }}" srcset="{{ asset('assets/img/front/tarifs@2x.png')}} 2x, {{ asset('assets/img/front/tarifs@3x.png')}} 3x" alt="tarifs">
+            <div class="leftText">
+              <h3>Tarifs</h3>
+              <p>À venir</p>
+            </div>
+          </div>
+        </div>
+        <div class="blockRight">
+          <div class="formDetail">
+            <h3>Les cours</h3>
+            <p>• Des documents techniques et méthodologiques (analyse d’une marche normale, la détection, la marche à caractère...)</p>
+            <p>• 6 ateliers de plusieurs jours chacun abordant des thématiques spécifiques (le pré cinéma, le layout, la pixillation...)</p>
+            <h3>Les exercices</h3>
+            <p>• 20 exercices d’animation ,répartis sur 8 mois, parcourant les problématiques fondamentales de l’animation (anticipation/action/réaction, lourd/léger, locomotions, acting...)</p>
+            <p>• 6 exercices de storyboard initial (nomenclature et découpage, découpage d’un dialogue à deux protagonistes, découpage sur une adaptation de récit petite enfance...)</p>
+            <h3>Notre objectif</h3>
+            <p>Les 3 buts principaux à atteindre à l’issue de la  première année seront :</p>
+            <p>• La constitution d’un book (niveau concours d’entrée aux écoles d’animation).</p>
+            <p>• La réalisation d’un film personnel en animation de 30 secondes, sonorisé.</p>
+            <p>• La réalisation d’une animatique de 2 minutes, sonorisée, sur un projet personnel.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bg-yellow">
+        <a href="{{ path('subscription_form') }}" class="bg-darkBlue">M'inscrire à la formation</a>
+      </div>
+    </div>
+    <div class="formContent" data-nbform="2">
+      <div class="patternBlue100">
+        <div class="blockLeft">
+          <div class="formHeure">
+            <img src="{{ asset('assets/img/front/heures.png') }}" srcset="{{ asset('assets/img/front/heures@2x.png')}} 2x, {{ asset('assets/img/front/heures@3x.png')}} 3x" alt="heures">
+            <div class="leftText">
+              <h3>Nombres d’heures</h3>
+              <p>À venir</p>
+            </div>
+          </div>
+          <div class="formPrix">
+            <img src="{{ asset('assets/img/front/tarifs.png') }}" srcset="{{ asset('assets/img/front/tarifs@2x.png')}} 2x, {{ asset('assets/img/front/tarifs@3x.png')}} 3x" alt="tarifs">
+            <div class="leftText">
+              <h3>Tarifs</h3>
+              <p>À venir</p>
+            </div>
+          </div>
+        </div>
+        <div class="blockRight">
+          <div class="formDetail">
+            <h3>Les cours</h3>
+            <p>Cette deuxième année poursuit et approfondit toutes les thématiques abordées en première année, en mettant l’accent sur la narration et la mise en scène :</p>
+            <p>• Des documents techniques et méthodologiques (exposition compensée, locomotions animales, la synchronisation labiale...)</p>
+            <h3>Les exercices</h3>
+            <p>• 6 exercices narratifs d’animation (entre 5 et 8 séances chacun) exigeant un découpage préalable (autoportrait en mouvement, interactions, acting/lipsync...)</p>
+            <p>• 5 exercices de storyboard (entre 5 et 10 séances chacun) avec animatique et son (récit parallèle, dialogue à plus de 2 protagonistes, exercice de storyboard en condition de production...)</p>
+            <p>• 6 ateliers de plusieurs jours chacun abordant des thématiques spécifiques (réalisation d’un film d’animation de plus de 2 minutes, autres techniques du cinéma d’animation, portfolio…) </p>
+            <h3>Notre objectif</h3>
+            <p>Le but de cette 2ème année est d’avoir atteint le niveau pour postuler en tant qu’animateur 2D ou storyboarder dans un studio d’animation.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bg-yellow">
+        <a href="{{ path('subscription_form') }}" class="bg-darkBlue">M'inscrire à la formation</a>
+      </div>
+    </div>
+    <div class="formContent" data-nbform="3">
+      <div class="patternBlue100 moduleContainer">
+        <div class="blockLeftModule ">
+          <div class="blockModule">
+            <h3>II – Locomotions humaines</h3>
+            <p>Ce module d’adresse à des personnes ayant déjà quelques notions fondamentales d’animation et ayant une bonne pratique du dessin.<br>
+            Les exercices explorent les modes de locomotions humaines ( marche, marche à caractère, marche contrainte, course, changements d’allure de locomotion). <br>
+            L’ensemble des exercices se fait en 15 jours complets de travail (journées de 6h) et ils sont de difficulté 2.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+          <div class="blockModule">
+            <h3>IV – Interactions</h3>
+            <p>Ce module s’adresse à de bons dessinateurs ayant une pratique préalable de l’animation.<br>
+            Les exercices traitent des interactions entre personnages humains ou animaux (danse, combat) et nécessitent une planification préalable ( prédécoupage, détection, feuille d’exposition).<br>
+            L’ensemble des exercices se fait en 13 jours complets de travail (journées de 6h) et ils sont de difficulté 4.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+          <div class="blockModule">
+            <h3>VI – Pour débuter en storyboard</h3>
+            <p>Ce module s’adresse aux débutants en storyboard ayant une pratique ancienne et régulière du dessin. <br>
+              Les exercices et les cours les accompagnant énoncent les règles principales de la grammaire cinématographique appliquée au découpage et à la mise en scène en animation.<br>
+              Certains des exercices seront finalisés sous forme d’animatiques avec son.<br>
+              L’ensemble des exercices se fait en 16 jours complets de travail (journées de 6h) et ils sont de difficulté 2 et 3.</p>
+              <p class="modulePrice">690€</p>
+          </div>
+        </div>
+        <div class="blockRightModule">
+          <div class="blockModule">
+            <h3>I – Pour débuter en animation</h3>
+            <p>Ce module s’adresse aux débutants en animation ayant une pratique ancienne et régulière du dessin.<br>
+            Les exercices proposés abordent les principes fondamentaux de l’animation ( poids, matières, conservation des volumes et proportions, anticipation/action/réaction).<br>
+            L’ensemble des exercices se fait en 15 jours complets de travail (journées de 6h) et ils sont de difficulté 1 et 2.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+
+          <div class="blockModule">
+            <h3>III – Locomotions animales</h3>
+            <p>Ce module d’adresse à des personnes connaissant déjà les principes fondamentaux de l’animation et ayant une pratique ancienne et quotidienne du dessin.<br>
+            Les exercices parcourent les différents modes de locomotions animales ( marche quadrupède, amble,  trot, galop, vol des oiseaux).<br>
+            L’ensemble des exercices se fait en 13 jours complets de travail (journées de 6h) et ils sont de difficulté 3.</p>
+            <p class="modulePrice">590€</p>
+          </div>
+
+          <div class="blockModule">
+            <h3>V – Acting/Lipsync</h3>
+            <p>Ce module s’adresse à de bons dessinateurs ayant une pratique préalable de l’animation.<br>
+              Les exercices nécessitent une planification préalable (pré découpage, détection, feuille d’exposition), et abordent les problématiques d’animation de personnages dialoguant. <br>
+            L’ensemble des exercices se fait en 18 jours complets de travail (journées de 6h) et ils sont de difficulté 4.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+
+          <div class="blockModule">
+            <p>Mode de fonctionnement</p>
+            <p>Chaque exercice réalisé me sera envoyé, sur le site, sous forme de fichier, et je ferai un retour des corrections ou modifications à effectuer avant d’obtenir la version finale validée du travail.</p>
+            <p>Une présentation et des documents techniques accompagnent chaque exercice.</p>
+          </div>
+        </div>
+        <div class="blockModuleMobile">
+          <div class="blockModule">
+            <h3>I – Pour débuter en animation</h3>
+            <p>Ce module s’adresse aux débutants en animation ayant une pratique ancienne et régulière du dessin.<br>
+            Les exercices proposés abordent les principes fondamentaux de l’animation ( poids, matières, conservation des volumes et proportions, anticipation/action/réaction).<br>
+            L’ensemble des exercices se fait en 15 jours complets de travail (journées de 6h) et ils sont de difficulté 1 et 2.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+          <div class="blockModule">
+            <h3>II – Locomotions humaines</h3>
+            <p>Ce module d’adresse à des personnes ayant déjà quelques notions fondamentales d’animation et ayant une bonne pratique du dessin.<br>
+            Les exercices explorent les modes de locomotions humaines ( marche, marche à caractère, marche contrainte, course, changements d’allure de locomotion). <br>
+            L’ensemble des exercices se fait en 15 jours complets de travail (journées de 6h) et ils sont de difficulté 2.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+          <div class="blockModule">
+            <h3>III – Locomotions animales</h3>
+            <p>Ce module d’adresse à des personnes connaissant déjà les principes fondamentaux de l’animation et ayant une pratique ancienne et quotidienne du dessin.<br>
+            Les exercices parcourent les différents modes de locomotions animales ( marche quadrupède, amble,  trot, galop, vol des oiseaux).<br>
+            L’ensemble des exercices se fait en 13 jours complets de travail (journées de 6h) et ils sont de difficulté 3.</p>
+            <p class="modulePrice">590€</p>
+          </div>
+          <div class="blockModule">
+            <h3>IV – Interactions</h3>
+            <p>Ce module s’adresse à de bons dessinateurs ayant une pratique préalable de l’animation.<br>
+            Les exercices traitent des interactions entre personnages humains ou animaux (danse, combat) et nécessitent une planification préalable ( prédécoupage, détection, feuille d’exposition).<br>
+            L’ensemble des exercices se fait en 13 jours complets de travail (journées de 6h) et ils sont de difficulté 4.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+          <div class="blockModule">
+            <h3>V – Acting/Lipsync</h3>
+            <p>Ce module s’adresse à de bons dessinateurs ayant une pratique préalable de l’animation.<br>
+              Les exercices nécessitent une planification préalable (pré découpage, détection, feuille d’exposition), et abordent les problématiques d’animation de personnages dialoguant. <br>
+            L’ensemble des exercices se fait en 18 jours complets de travail (journées de 6h) et ils sont de difficulté 4.</p>
+            <p class="modulePrice">490€</p>
+          </div>
+          <div class="blockModule">
+            <h3>VI – Pour débuter en storyboard</h3>
+            <p>Ce module s’adresse aux débutants en storyboard ayant une pratique ancienne et régulière du dessin. <br>
+              Les exercices et les cours les accompagnant énoncent les règles principales de la grammaire cinématographique appliquée au découpage et à la mise en scène en animation.<br>
+              Certains des exercices seront finalisés sous forme d’animatiques avec son.<br>
+              L’ensemble des exercices se fait en 16 jours complets de travail (journées de 6h) et ils sont de difficulté 2 et 3.</p>
+              <p class="modulePrice">690€</p>
+          </div>
+          <div class="blockModule">
+            <p>Mode de fonctionnement</p>
+            <p>Chaque exercice réalisé me sera envoyé, sur le site, sous forme de fichier, et je ferai un retour des corrections ou modifications à effectuer avant d’obtenir la version finale validée du travail.</p>
+            <p>Une présentation et des documents techniques accompagnent chaque exercice.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="bg-yellow">
+        <a href="{{ path('subscription_form') }}" class="bg-darkBlue">M'inscrire à la formation</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container exerciceGratuit" id="exerciceGratuit">
+  <div class="row">
+    <div class="col-lg-6 exerciceContent order-lg-1">
+      <p class="overTitle text-blue">un exercice gratuit</p>
+      <h2>Vous voulez tester vos capacités ?<span class="text-yellow"> •</span></h2>
+      <p class="font-bold">Je vous propose un exercice afin de tester vos capacités en dessin et en animation 2D…</p>
+      <p>Cet exercice ludique servira d’une part à ce que l’élève puisse s’auto-évaluer quant à son aisance à l’animation, d’autre part il me servira à identifier le niveau de dessin du futur étudiant et son ressenti
+      du mouvement et de l’acting.</p>
+      <p>Mon retour montrera à l’élève le mode de fonctionnement que je propose et lui permettra d’évaluer la pertinence de la correction.</p>
+      <p>Ce sera une manière de faire connaissance autour de l’enjeu qui nous réunira et d’apporter d’éventuels ajustements personnalisés du programme et des exercices.</p>
+      <p>Cependant, il n’est nullement obligatoire de le faire avant de s’inscrire.</p>
+      <p>C’est un exercice de difficulté moyenne, admettant éventuellement un traitement cartoon.</p>
+      <p>Y sont présentes les problématiques de poids, d’accélération, d’anticipation, action, réaction, d’amortis, conservation des tailles et proportions etc.</p>
+      <p>Il peut être réalisé en une trentaine de dessins et peut se finaliser en deux ou trois journées.</p>
+      <p>Il me sera envoyé sur le site sous forme d’un export vidéo n’excédant pas 10 Mo et je répondrai par un commentaire, point par point, accompagné d’une animation de l’exercice.</p>
+      <div class="cstBtnBorderTrame text-yellow border-yellow" id="freeExe">consulter l’énoncé de l’exercice</div>
+    </div>
+    <div class="col-lg-6 exerciceImg order-first order-lg-2">
+      <img src="{{ asset('assets/img/front/jump_def2.jpg') }}" alt="">
+    </div>
+    <div class="col-12 order-lg-3">
+      <p class="text-blue font-bold exerciceCorrige">Je souhaite recevoir le corrigé de mon exercice, j’envoie mon export vidéo via <a class="text-darkBlue" href="{{ path('public_home') }}#contact">le formulaire de contact en page d’accueil</a></p>
+    </div>
+  </div>
+</div>
+<div class="popUpExe {% if freeExe %}shown{% endif %}">
+
+  <div class="container">
+    <div class="popUpClose">
+      <span></span>
+      <span></span>
+    </div>
+    {% if freeExe %}
+      <a class="linkPdfFreeExe" target="_blank" href="{{ asset('assets/pdf/exercice_gratuit.pdf') }}">Télécharger l'exercice gratuit.</a>
+    {% else %}
+      <p class="text-white text-center">Pour consulter l’énoncé de l’exercice, veuillez renseigner votre adresse email</p>
+      {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col d-flex">
+                {{ form_widget(form.email) }}
+                <button type="submit" name="button" class="cstSubmit"> <img src="{{ asset('assets/img/front/submit.png') }}" srcset="{{ asset('assets/img/front/submit@2x.png')}} 2x, {{ asset('assets/img/front/submit@3x.png')}} 3x" alt="fleche"> </button>
+            </div>
+        </div>
+      {{ form_end(form) }}
+    {% endif %}
+
+
+  </div>
+</div>
+{% endblock %}

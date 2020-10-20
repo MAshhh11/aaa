@@ -1,0 +1,55 @@
+<script src="{{ asset('assets/') }}vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="{{ asset('assets/') }}vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#dt_default").DataTable({
+            "aLengthMenu": [
+                [ 50, 100, 150],
+                [ 50, 100, 150] // change per page values here
+            ],
+    responsive: true,
+            "iDisplayLength": 50, // default record count per page
+            "bServerSide": true, // server side processing
+            "sDom": '<"top"l>rt<"bottom"p><"clear">',// cacher le champ de recherche
+            "sAjaxSource": tableUrl, // ajax source
+            "aaSorting": tableSortingDefault, // set first column as a default sort by asc
+            "columnDefs": [ {
+                    "targets": tableNotOrderable,
+                    "orderable": false
+            }],
+            "language": {
+                "url": "{{ asset('assets/vendor/datatables.net/fr.json') }}"
+            }
+        });
+        
+        $("#dt_default").on('xhr.dt', function ( e, settings, json, xhr ) {
+          setTimeout(function() {
+              $('[data-toggle="tooltip"]').tooltip()
+          },500)
+        });
+        
+        function fnFilterColumn(i) {
+            $('#dt_default').dataTable().fnFilter(
+                $("#col"+i+"_filter").val(),
+                i
+            );
+        }
+
+        $('.table-filter').keyup( function() {
+            var i = $(this).data('filter');
+            fnFilterColumn(i);
+        });
+
+        $('.table-filter').change( function() {
+            var i = $(this).data('filter');
+            fnFilterColumn(i);
+        });
+    });
+</script>

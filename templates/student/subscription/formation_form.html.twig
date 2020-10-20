@@ -1,0 +1,121 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = "formation_choice" %}
+    {% set breadcrumbs = [
+        {"title": 'test', 'url' : ""},
+    ] %}
+
+{% block body %}
+<div class="card shadow">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-12">
+                {% include 'admin/components/confirmation.html.twig' %}
+
+                <div class="card border-0 mb-0">
+                    <div class="card-header">
+                        <h2 class="font-weight-bold text-center">Je choisis ma formation !<span class="text-yellow"> •</span></</span></h2>
+                    </div>
+                    <div class="card-body bg-secondary">
+                        <div class="row">
+                            {% for formation in formations %}
+                                <div class="cardformation card shadow col-lg-4 text-center">
+                                    <div class="text-center py-4">
+                                        <div class="row d-flex justify-content-center align-items-center">
+                                            <div class="col-12">
+                                                <h2>{{ formation.title }}</h2>
+                                            </div>
+                                            <div class="col-12">
+                                                <h2>{{ formation.price }} €</h2>
+                                            </div>
+                                            <div class="col-12 choseFormation" id="choseFormation">
+                                                <input type="checkbox" value="{{ formation.id }}" name="formation" id="{{ formation.title }}" style="display: none;">
+                                                <a href="{{ path('formation_checkout', {formationId : formation.id}) }}" class="btn btn-secondary select-formation">
+                                                    <span class="btn-inner--text">Choisir</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var env = 'dev';
+        var API = {
+            'dev' : 'pk_test_51GxBtmB8l4a2HJoGpVab1Yvw8ieTWeT61bPtHFcMNZ44I7VMg8nTchSzXcpBsr6mog1JFcpyByCKpzn7H1YaAzRv00Hf1RdxxS',
+            'prod' : ''
+        }
+        var stripe = Stripe(API[env]);
+        var elements = stripe.elements();
+
+        var style = {
+            base: {
+                color: "#32325d",
+            }
+        };
+
+        var card = elements.create("card", { style: style });
+        card.mount("#card-element");
+        var cardButton = document.getElementById('card-button');
+        var clientSecret = cardButton.dataset.secret;
+
+        card.on('change', function(event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        var form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', function(ev) {
+            ev.preventDefault();
+
+            let address = document.getElementById('address').value;
+            let address2 = document.getElementById('address2').value;
+            let city = document.getElementById('city').value;
+            let zip = document.getElementById('zip').value;
+            let country = document.getElementById('country').value;
+
+
+            stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: '{{ app.user.firstname }} {{ app.user.lastname }}',
+                        email: '{{ app.user.email }}',
+                        address : {
+                            city : city,
+                            country : 'FR',
+                            line1 : address + ' ' + address2,
+                            postal_code : zip,
+                        }
+                    }
+                }
+            }).then(function(result) {
+                if (result.error) {
+
+                    $('#card-errors')
+                        .html(result.error.message)
+                        .show();
+                } else {
+                    if (result.paymentIntent.status === 'succeeded') {
+                        $('#payment-form').submit();
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

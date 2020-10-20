@@ -1,0 +1,329 @@
+.alert-text {
+    width: calc(100% - 50px);
+}
+.card-profile-image img {
+    max-height:140px;
+}
+.apexcharts-menu {
+    min-width: 185px!important;
+}
+.select2-selection:after {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: '\f107';
+        color: #abb4be;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 12px;
+}
+.avatar.rounded-circle.article {
+    width:48px;
+    height:48px;
+}
+.avatar.rounded-circle.article img {
+    max-width: 100%;
+    max-height:100%;
+}
+.viewArticle {
+    cursor: pointer;
+}
+.form-control, .input-group-text, 
+.select2-container .select2-selection--single, .select2-container--default.select2-container--focus .select2-selection--multiple, .select2-container--default .select2-selection--multiple, .select2-container--default .select2-search--dropdown .select2-search__field {
+    border-color:#666;
+}
+.clubpicture.card-profile-image img{
+    max-height: 125px;
+    border-radius: 0!important;
+    background: white;
+    border: 4px solid #385d9d;
+}
+.cardUpload img {
+    max-height: 200px;
+    width: auto!important;
+}
+.select2.select2-container {
+}
+.bootstrap-datetimepicker-widget a[data-action='togglePicker'],
+.bootstrap-datetimepicker-widget a[data-action='togglePicker']:hover
+{
+    color: #f7d136;
+}
+.bootstrap-datetimepicker-widget .picker-switch
+{
+    color: #f7d136; 
+}
+.bootstrap-datetimepicker-widget table th.prev span,
+.bootstrap-datetimepicker-widget table th.next span
+{
+    color: #f7d136; 
+}
+.bootstrap-datetimepicker-widget table th.dow
+{
+    color: #f7d136;
+}
+.bootstrap-datetimepicker-widget table td.active > div,
+.bootstrap-datetimepicker-widget table td.active:hover > div
+{
+    background-color: #f7d136;
+}
+.bootstrap-datetimepicker-widget table td span.active
+{
+    background-color: #f7d136;
+}
+
+input.datetimepicker[data-color='orange'] + .bootstrap-datetimepicker-widget
+{
+    background-color: #f7d136;
+}
+input.datetimepicker[data-color='orange'] + .bootstrap-datetimepicker-widget table td.active > div,
+input.datetimepicker[data-color='orange'] + .bootstrap-datetimepicker-widget table td.active:hover > div,
+input.datetimepicker[data-color='orange'] + .bootstrap-datetimepicker-widget button[data-action],
+input.datetimepicker[data-color='orange'] + .bootstrap-datetimepicker-widget.dropdown-menu.top:after,
+input.datetimepicker[data-color='orange'] + .bootstrap-datetimepicker-widget.dropdown-menu.bottom:before
+{
+    color: #f7d136;
+}
+.datepicker table tr td.active, .datepicker table tr td.active.highlighted, .datepicker table tr td.active:hover, .datepicker table tr td.active.highlighted:hover {
+    background-color: #f7d136;
+}
+.card-profile .badge {
+    font-size:100%;
+}
+.modal-dialog {
+    max-width: 900px;
+}
+.img-preview {
+    overflow: hidden;
+    display: block;
+    margin: 10px auto;
+    border:1px solid #333;
+    border-radius: 50%;
+}
+.img-preview-lg {
+    width:200px;
+    height:200px;
+}
+.img-preview-md {
+    width:100px;
+    height:100px;
+}
+.img-preview-sm {
+    width:25px;
+    height:25px;
+}
+.alert-info a {
+    color:white;
+    text-decoration: underline;
+}
+.select2-container .select2-selection--single {
+    height:auto!important;
+    border: 1px solid #dee2e6!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 1.5!important;
+    font-size: .875rem;
+    padding: 1.5px 0;
+}
+.select2-container .select2-selection--single:focus, .select2-container--default.select2-container--focus .select2-selection--multiple:focus, .select2-container--default .select2-selection--multiple:focus, .select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    border-color: #385d9d;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {    
+    color: #FFF;
+    background-color: #385d9d;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+        color: #f8d03b;
+}
+.navbar-vertical .navbar-brand-img, .navbar-vertical .navbar-brand > img {
+    max-height:100px!important;
+}
+.table .thead-light th {
+    color: #385d9d;
+    background-color: #f7d136;
+}
+.table-actions tr td:last-child{
+    width:150px;
+}
+
+.btn-danger {
+    border-color: #e53935;
+    background-color: #e53935;
+}
+.btn-danger:hover {
+    border-color: #e53935;
+    background-color: #e53935;
+}
+a:focus, th:focus{
+    outline: none;
+}
+.was-validated .form-control:valid .input-group-text, 
+.form-control.is-valid .input-group-text, 
+.was-validated .custom-select:valid .input-group-text, 
+.custom-select.is-valid .input-group-text {
+    border-color: #2dce89!important;
+}
+.alert-danger {
+    background-color:#e53935;
+    border-color:#e53935;
+}
+.was-validated .form-control:invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .custom-select.is-invalid {
+    border-color:#e53935;
+}
+.invalid-feedback {
+    color:#e53935;    
+}
+.bgColorPrimary {
+    background-color:#385E9D!important;
+}
+.bgSecondary {
+    background-color:#FFD100!important;
+}
+
+.bg-gradient-primary {
+    /*background: linear-gradient(87deg, #385E9D 0, #1d3661 100%) !important;*/
+    background: #385e9d!important;
+}
+.text-blue {
+    color:#385E9D!important;
+}
+.text-yellow {
+    color:#FFD100!important;
+}
+
+.sidenav-header {
+    height:auto!important;
+}
+.sidenav-header img {
+    max-height:100%!important;
+}
+.sidenav .navbar-brand {
+    padding:1rem;
+}
+.btn-primary {
+    background-color:#385E9D;
+    border-color: #385E9D;
+}
+.btn-primary:hover {
+    color: #fff;
+    border-color: #FFD100;
+    background-color: #FFD100;
+}
+.bg-default {
+    background-color: #FFD100 !important;
+}
+.fill-default {
+    fill: #FFD100;
+}
+a {
+    color: #385e9d;
+}
+.page-item.active .page-link {
+    border-color: #385e9d;
+    background-color: #385e9d;
+}
+#dt_default_length .form-control-sm {
+    width: 70px!important;    
+}
+.dataTables_paginate {
+    padding-left: 1.5rem;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    content: '/';
+}
+.form-control:focus,
+.focused .input-group-text,
+.focused .form-control{
+    border-color: #f5d034!important;    
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before,
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    border-color: #385e9d;
+    background-color:#385e9d;
+}
+.custom-control-label::before {
+    border-color: #dee2e6!important;
+}
+#footerLimeo {
+    position: fixed;
+    z-index:10;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    padding: 0 25px;
+    border-top: 1px solid rgba(0,0,0,.12);
+    line-height: 20px;
+    font-size: 0.7rem;
+    padding: 0 12px;
+    text-align: right;
+}
+.dz-preview-img {
+    width:auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+.dz-preview-cover {
+    text-align:center;
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.form-control::-ms-input-placeholder
+{
+    opacity: 0.5; 
+}
+.form-control::placeholder
+{
+    opacity: 0.5; 
+}
+.form-control {
+    color:#585757;
+}
+.cardUpload {
+    background:#FFF;
+    padding:.5rem !important;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+}
+.fr-toolbar.fr-top {
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border: 1px solid #dee2e6;
+}
+.fr-box.fr-basic .fr-wrapper{
+    border-color: #dee2e6!important;    
+    border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+}
+.second-toolbar {
+    display:none;
+}
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
+    cursor: pointer;
+    position: relative;
+}
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 0.9em;
+    display: block;
+    opacity: 0.3;
+}
+table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
+    right: 1em;
+    content: "\2191";
+}
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+    right: 0.5em;
+    content: "\2193";
+}
+table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after {
+    opacity: 1;
+}

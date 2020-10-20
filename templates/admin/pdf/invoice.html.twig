@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<link rel="STYLESHEET" href="https://dompdf.net/test/css/print_static.css" type="text/css">
+</head>
+
+<body marginwidth="0" marginheight="0">
+
+<div id="body">
+    
+<div id="section_header">
+    
+    <table style="width: 100%;" class="header">
+        <tbody>
+            <tr>
+                <td>
+                    <h1 style="text-align: left">Soroptimist Internationale Union Française</h1>
+                </td>
+                <td style='text-align: right;'>
+                    <img src="{{ absolute_url(asset('assets/img/logo.jpg')) }}" style='width:75px;' class="navbar-brand-img" alt="Soroptimist France">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<br/>
+
+<div id="content">
+  
+<div class="page" style="font-size: 7pt">
+    
+<table style="width: 100%;" class="header">
+<tbody>
+    <tr>
+        <td><h1 style="text-align: left">Facture {{ order.code }}</h1></td>
+        <td><h1 style="text-align: right">{{ order.createdAt|date("d/m/Y") }}</h1></td>
+    </tr>
+</tbody>
+</table>
+    
+<br/>
+
+<table style="width: 100%; font-size: 8pt;">
+<tbody>
+    <tr>
+        <td>Nom : <strong>{{ order.user.lastname }}</strong></td>
+        <td>Prénom : <strong>{{ order.user.firstname }}</strong></td>
+    </tr>
+    <tr>
+        <td>Adresse: <strong>{{ order.address }}</strong></td>
+        <td>Complément adresse: <strong>{{ order.addressBis }}</strong></td>
+    </tr>
+
+    <tr>
+        <td>Code postal: <strong>{{ order.zip }}</strong></td>
+        <td>Ville: <strong>{{ order.city }}</strong></td>
+    </tr>
+</tbody></table>
+
+
+<table class="change_order_items">
+
+    <tbody>
+        <tr>
+            <td colspan="4">
+                <h2>Détails de la commande:</h2>
+            </td>
+        </tr>
+    </tbody>
+    
+    <tbody>
+        <tr>
+            <th>Article</th>
+            <th>Quantity</th>
+            <th>Prix unitaire</th>
+            <th>Sous-total</th>
+        </tr>
+        {% set total = 0 %}
+        {% for k, detail in order.shopOrderDetails %}
+            <tr class="{% if k%2 %}even_row{% else %}odd_row{% endif %}">
+                <td>{{ detail.name }}</td>
+                <td style="text-align: center">{{ detail.quantity }}</td>
+                <td style="text-align: right;">{{ detail.price|number_format(2, ',', ' ') }}€</td>
+                <td class="change_order_total_col">{{ (detail.price * detail.quantity)|number_format(2, ',', ' ') }}€</td>
+            </tr>
+            {% set total = total + detail.price * detail.quantity %}
+        {% endfor %}
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td colspan="3" style="text-align: right;"><strong>TOTAL:</strong></td>
+            <td class="change_order_total_col"><strong>{{ total|number_format(2, ',', ' ') }}€</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="sa_signature_box" style="border-top: 1px solid black; padding-top: 2em; margin-top: 2em;">
+    <tbody>
+      <tr>
+          <td colspan="4" style="white-space: normal">Soroptimist International Union Française</td>
+      </tr>
+  </tbody>
+</table>
+
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

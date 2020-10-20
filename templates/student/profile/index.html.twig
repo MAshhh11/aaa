@@ -1,0 +1,107 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'profile' %}
+
+
+{% set page_name = 'Mon Profil' %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate','class': 'needs-validation', 'autocomplete': 'off'}}) }}
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{page_name}}</h3>
+                </div>
+                <div class="col text-right">
+                    <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false" title="" data-original-title="Enregistrer le formulaire">
+                        <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h6 class="heading-small text-muted mb-4">Informations personnelles</h6>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_widget(form.firstname) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_widget(form.phone) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_widget(form.password.first) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_widget(form.password.second) }}
+                </div>
+            </div>
+            <hr/>
+        </div>
+        <div class="card-body">
+
+            <div class="card border-0 py-3">
+                <div class="row px-5">
+                    <div class="col-6">
+                        <h6 class="heading-small text-muted">Formations</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush table-striped table-hover table-actions">
+                            <thead class="thead-light">
+                            <tr>
+                                <td> Formation </td>
+                                <td> Formation Actuelle </td>
+                                <td> Date début formation </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for formation in formations %}
+                                <tr>
+                                    <td>{{ formation.title }}</td>
+                                    <td>{% if formation.is_current == 1 %}oui {% else %}non{% endif %}</td>
+                                    <td>{{ formation.created_at|date('d/m/Y')}}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-icon btn-success" type='submit' >
+                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                <span class="btn-inner--text">Enregistrer</span>
+            </button>
+
+            <a class="btn btn-icon btn-sm" href='{{path("user_index")}}'>
+                <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                <span class="btn-inner--text">Annuler</span>
+            </a>
+
+        </div>
+    </div>
+
+
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+{% endblock %}

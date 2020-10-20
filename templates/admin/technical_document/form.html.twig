@@ -1,0 +1,107 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'technical_documents' %}
+{% set submenu = 'technical_documents' %}
+
+  {% if item is not null %}
+      {% set page_name = 'Modification du document '~item.file %}
+  {% else %}
+      {% set page_name = 'Ajout de Documents Techniques' %}
+  {% endif %}
+
+
+
+{% set breadcrumbs = [
+    {"title": "Administration", 'url' : ""},
+    {"title": "Documents Techiques", 'url' : path('technical_doc_index')},
+    {"title": page_name, 'url' : ""},
+] %}
+
+{% block body %}
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{ page_name }}</h3>
+                </div>
+                <div class="col text-right">
+                    <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false"
+                            title="" data-original-title="Enregistrer le formulaire">
+                        <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% if item is not null %}
+            {% set id = item.id %}
+        {% else %}
+            {% set id = null %}
+        {% endif %}
+        <form action="{{path("technical_doc_save", {'id' : id}) }}" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                {% if item is null %}
+                <h6 class="heading-small text-muted mb-4 mt-4">Documents</h6>
+                <div id="attachmentModel" class="d-block">
+                    {% set  i = 1 %}
+                    <div class="row mt-3">
+                        <div class="col-sm-6">
+                            <input type="file" name="files[]" class="form-control"/>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="javascript:void(0);" class="btn btn-icon btn-danger removeAttachment"><i
+                                        class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-lg-12">
+                    <h6 class="heading-small text-muted mb-4 mt-4">Rattacher ce document aux exercices: </h6>
+                    {% if exercices|length > 0 %}
+                        {% for exercice in exercices %}
+                        <div class="mt-4 form-check" id="listAllExercices">
+                            <input type="checkbox" value="{{ exercice.id }}" id="{{ exercice.title }}" name="{{ exercice.title }}" class="select-exercice form-check-input" {% if  exercice.id in checkExercices%} checked {% endif %}>
+                            <label class="form-check-label" for="{{ exercice.title }}">{{ exercice.title }}</label>
+                        </div>
+                        {% endfor %}
+                    {% endif%}
+                </div>
+            </div>
+            <div class="card-footer">
+
+                <button type="submit" class="btn btn-icon btn-success">
+                    <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    <span class="btn-inner--text">Enregistrer</span>
+                </button>
+                <a class="btn btn-icon btn-sm" href='{{ path("technical_doc_index") }}'>
+                    <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                    <span class="btn-inner--text">Annuler</span>
+                </a>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $("body").on("click", ".removeAttachment", function () {
+            $(this).parent().parent().remove();
+        });
+
+        let i = 2;
+        $('#addAttachment').click(function () {
+            var html = $("#attachmentModel").html();
+            $("#listAttachments").prepend(html);
+
+            $('.select-file-type').last().attr('id', i);
+            i++;
+        });
+
+
+
+    </script>
+{% endblock %}

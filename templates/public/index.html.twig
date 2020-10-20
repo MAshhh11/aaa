@@ -1,0 +1,446 @@
+{% extends 'public/base.html.twig' %}
+{% set page = "home" %}
+
+{% block title %}L’animateur autodidacte accompagné{% endblock %}
+
+{% block main %}
+<div class="container">
+  <div class="row presentation">
+    <div class="col-12 col-lg-6">
+      <p class="overTitle text-blue">à qui s'adresse ce site ?</p>
+      <h2 >L’animateur autodidacte <br>accompagné<span class="text-yellow"> •</span></h2>
+      <p><span class="font-bold">Ce site s’adresse à des jeunes dessinateurs désirant devenir animateurs ou storyboarders, et plus largement souhaitant travailler dans les métiers du cinéma d’animation.</span></p>
+      <p>Cet apprentissage se fera de manière progressive, à travers des exercices de difficultés croissantes, et sera <span class="font-bold">supervisé par un professionnel du cinéma d’animation</span>  assurant  un <span class="font-bold">accompagnement personnalisé et permanent pour chaque étudiant.</span></p>
+      <ul>
+        <li>• Pour des élèves souhaitant <span class="font-bold">un cursus complet de formation,</span> un programme détaillé sur deux ans en animation et storyboard est proposé, ainsi qu’un regard professionnel sur des registres essentiels comme leur pratique quotidienne du dessin,  la constitution de leur book, l’enrichissement de leurs références culturelles touchant au cinéma d’animation et aux expressions artistiques en général.</li>
+        <li>• Pour des élèves souhaitant <span class="font-bold">une préparation aux concours d’entrée dans une école d’animation,</span> le cursus le cursus de 1 ère année de la formation aboutira à la constitition d’un book complet du niveau requis pour ces examens.</li>
+        <li>• Enfin, pour des élèves qui souhaitent <span class="font-bold">une pratique de l’animation ou du storyboard de manière plus ponctuelle</span> ou des <span class="font-bold">jeunes professionnels souhaitant approfondir leurs conaissances,</span> je propose des modules de thématiques de travail (locomotions, acting/lipsync, le corps en mouvement, exercices narratifs etc.). </li>
+      </ul>
+      <p>Quelle que soit la formule choisie, <span class="font-bold">un prérequis incontournable est demandé : une pratique préalable assidue du dessin.</span></p>
+    </div>
+    <div class="col-12 col-lg-6">
+      <img src="{{ asset('assets/img/front/accueil.jpg')}}" alt="">
+      <div class="legendeImg">
+        <p class="m-0"><span class="font-bold">IMPORTANT : </span>chaque exercice proposé est une création originale ayant été pratiqué de très nombreuses fois par des centaines d’étudiants ; il est donc proposé une durée optimale de réalisation pour chaque exercice et un niveau de difficulté allant de 1 (facile) à 5 (difficile). Les critères de difficulté seront :<br>
+          • Pour l’animation : la complexité de l’action, l’animation en perspective, la présence de plusieurs personnages à animer, les interactions, la longueur du timing à animer.<br>
+          • Pour le storyboard : la complexité des actions, le nombre de personnages dans les séquences à mettre en scène, la complexité de la structure narrative (récits parallèles, va-et-vient temporels) .</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row bg-yellow suivi">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-white">Un suivi personnalisé<span class="text-white"> •</span></h2>
+        </div>
+      </div>
+      <div class="row" id="suivi">
+        <div class="col-6 col-md-4 col-lg-2 pictoContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111">
+            <defs>
+              <style>.cls-1{fill:none;stroke-miterlimit:10;}</style>
+            </defs>
+            <g id="Calque_2" data-name="Calque 2">
+              <path stroke="#fff" stroke-with="1px" class="cls-1"  d="
+                      M 55, 55
+                      m -55, 0
+                      a 55,55 0 1,0 110,0
+                      a 55,55 0 1,0 -110,0
+                      ">
+              </g>
+            </svg>
+          <div class="pictoSuivi">
+            <img src="{{ asset('assets/img/front/icone_exercices.png')}}" srcset="{{ asset('assets/img/front/icone_exercices@2x.png')}} 2x, {{ asset('assets/img/front/icone_exercices@3x.png')}} 3x" alt="exercices" class="pictoExe">
+          </div>
+          <p><span class="font-bold">1• Accès aux exercices</span> et cours depuis le site</p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 pictoContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111">
+            <defs>
+              <style>.cls-1{fill:none;stroke-miterlimit:10;}</style>
+            </defs>
+            <g id="Calque_2" data-name="Calque 2">
+              <path stroke="#fff" stroke-with="1px" class="cls-1"  d="
+                      M 55, 55
+                      m -55, 0
+                      a 55,55 0 1,0 110,0
+                      a 55,55 0 1,0 -110,0
+                      ">
+              </g>
+            </svg>
+          <div class="pictoSuivi">
+            <img src="{{ asset('assets/img/front/icone_envoi.png')}}" srcset="{{ asset('assets/img/front/icone_envoi@2x.png')}} 2x, {{ asset('assets/img/front/icone_envoi@3x.png')}} 3x" alt="mail" class="pictoEnvoi">
+          </div>
+          <p><span class="font-bold">2• Échange par mail</span> avant chaque exercice</p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 pictoContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111">
+            <defs>
+              <style>.cls-1{fill:none;stroke-miterlimit:10;}</style>
+            </defs>
+            <g id="Calque_2" data-name="Calque 2">
+              <path stroke="#fff" stroke-with="1px" class="cls-1"  d="
+                      M 55, 55
+                      m -55, 0
+                      a 55,55 0 1,0 110,0
+                      a 55,55 0 1,0 -110,0
+                      ">
+              </g>
+            </svg>
+          <div class="pictoSuivi">
+            <img src="{{ asset('assets/img/front/icone_video.png')}}" srcset="{{ asset('assets/img/front/icone_video@2x.png')}} 2x, {{ asset('assets/img/front/icone_video@3x.png')}} 3x" alt="video">
+          </div>
+          <p><span class="font-bold">3• Envoi d’un premier export</span> vidéo de votre travail</p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 pictoContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111">
+            <defs>
+              <style>.cls-1{fill:none;stroke-miterlimit:10;}</style>
+            </defs>
+            <g id="Calque_2" data-name="Calque 2">
+              <path stroke="#fff" stroke-with="1px" class="cls-1"  d="
+                      M 55, 55
+                      m -55, 0
+                      a 55,55 0 1,0 110,0
+                      a 55,55 0 1,0 -110,0
+                      ">
+              </g>
+            </svg>
+          <div class="pictoSuivi">
+            <img src="{{ asset('assets/img/front/icone_corrige.png')}}" srcset="{{ asset('assets/img/front/icone_corrige@2x.png')}} 2x, {{ asset('assets/img/front/icone_corrige@3x.png')}} 3x" alt="corrigé">
+          </div>
+          <p><span class="font-bold">4• Envoi d’un corrigé détaillé</span> par votre formateur</p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 pictoContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111">
+            <defs>
+              <style>.cls-1{fill:none;stroke-miterlimit:10;}</style>
+            </defs>
+            <g id="Calque_2" data-name="Calque 2">
+              <path stroke="#fff" stroke-with="1px" class="cls-1"  d="
+                      M 55, 55
+                      m -55, 0
+                      a 55,55 0 1,0 110,0
+                      a 55,55 0 1,0 -110,0
+                      ">
+              </g>
+            </svg>
+          <div class="pictoSuivi">
+            <img src="{{ asset('assets/img/front/icone_fin.png')}}" srcset="{{ asset('assets/img/front/icone_fin@2x.png')}} 2x, {{ asset('assets/img/front/icone_fin@3x.png')}} 3x" alt="fin">
+          </div>
+          <p><span class="font-bold">5• Poursuite et fin du travail.</span> Envoi de votre exercice fini par export vidéo</p>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 pictoContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111">
+            <defs>
+              <style>.cls-1{fill:none;stroke-miterlimit:10;}</style>
+            </defs>
+            <g id="Calque_2" data-name="Calque 2">
+              <path stroke="#fff" stroke-with="1px" class="cls-1"  d="
+                      M 55, 55
+                      m -55, 0
+                      a 55,55 0 1,0 110,0
+                      a 55,55 0 1,0 -110,0
+                      ">
+              </g>
+            </svg>
+          <div class="pictoSuivi">
+            <img src="{{ asset('assets/img/front/icone_debrief.png')}}"  srcset="{{ asset('assets/img/front/icone_debrief@2x.png')}} 2x, {{ asset('assets/img/front/icone_debrief@3x.png')}} 3x" alt="debrief">
+          </div>
+          <p><span class="font-bold">6• Débrief final</span> et passage à l’exercice suivant</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row dotPattern">
+    <div class="col-12 text-center suiviBtnContainer">
+      <a href="{{ path('public_formation') }}/#exerciceGratuit" class="suiviBtn">voir le test gratuit</a>
+    </div>
+  </div>
+  <div class="row bg-darkGrey formations">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p class="overTitle text-blue">il existe une formation adaptée pour chacun</p>
+          <div class="">
+            <h2 class="text-white">Nos différentes formations<span class="text-yellow"> •</span></h2>
+          </div>
+          <a href="#" class="cstBtnBorder text-yellow border-yellow">voir plus</a>
+        </div>
+      </div>
+        <div class="row formationRow">
+          <div class="col-12 col-lg-4 formContainer">
+            <div class="formation">
+              <div class="formationContainer">
+                <div class="front">
+                  <p class="text-center">Formation Année 1</p>
+                </div>
+                <div class="back">
+                  <div class="">
+                    <p>Ce programme est un apprentissage des métiers de l’animation au contenu équivalent à celui des « Prépas Animation ».</p>
+                    <p>Il concerne donc aussi bien les élèves qui veulent constituer un book pertinent en vue de préparer les
+                    concours d’entrée aux écoles d’animation, que les élèves souhaitant entamer un parcours autonome
+                    accompagné en 2 ans.</p>
+                  </div>
+                  <a href="{{ path('public_formation') }}" class="cstBtnBorder text-blue border-blue">voir le detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 formContainer">
+            <div class="formation">
+              <div class="formationContainer">
+                <div class="front">
+                  <p class="text-center">Formation Année 2</p>
+                </div>
+                <div class="back">
+                  <div class="">
+                    <p>Cette formation est la suite de l’apprentissage initié dans le programme Année 1.</p>
+                    <p>Toutes les problématiques techniques et narratives déjà abordées l’année précédente seront approfondies et une plus large part du planning sera consacrée aux réalisations et aux projets personnels.</p>
+                    <p>Elle concerne donc les élèves ayant déjà suivi la formation Année 1, mais aussi des étudiants ayant un niveau et une pratique préalable leur permettant d’aborder directement cette deuxième année.</p>
+                  </div>
+                  <a href="{{ path('public_formation') }}" class="cstBtnBorder text-blue border-blue">voir le detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4 formContainer">
+            <div class="formation">
+              <div class="formationContainer deco">
+                <div class="front ">
+                  <p class="text-center">Modules thématiques</p>
+                </div>
+                <div class="back">
+                    <p>Certains de ces modules sont accessibles à des débutants ayant déjà un certain niveau de dessin,
+                    d’autres s’adressent à des dessinateurs confirmés qui veulent se perfectionner en animation ou en
+                    storyboard.</p>
+                  <a href="{{ path('public_formation') }}" class="cstBtnBorder text-blue border-blue">voir le detail</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid position-relative">
+  <div class="travailDot"></div>
+  <div class="container travail">
+    <div class="row">
+      <div class="col-12">
+        <p class="overTitle text-blue">une grande rigueur</p>
+        <h2>Le travail autonome<span class="text-yellow"> •</span></h2>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p>Il demande une grande rigueur de la part de l’étudiant, lequel devra obligatoirement établir un emploi du temps journalier en tenant compte des éléments ci-dessous :</p>
+        <p>En plus des exercices d’animation et de storyboard ici proposés, l’élève devra :</p>
+        <ul>
+          <li>Tenir des carnets de croquis à travers une production journalière de dessins , quelle qu’en soit la durée de réalisation (croquis rapide ou dessin plus détaillé)</li>
+          <li>Explorer de manière autonome des logiciels 2D et 3D récurremment utilisés dans les métiers du cinéma d’animation ( Photoshop, Animate, ToonBoom, TvPaint, Blender etc.)</li>
+          <li>Fréquenter des cours de dessin de modèle vivant (en atelier ou en cours du soir).</li>
+        </ul>
+        <p>NB : un bilan régulier sera établi sur ces points avec le formateur.</p>
+      </div>
+      <div class="col-12 col-lg-6">
+        <h3>Planning journalier</h3>
+        <p>L’étudiant devra disposer d’un lieu calme pour travailler.</p>
+        <p>Les séances de travail conseillées sont de 3 heures continues, une le matin et une l’après-midi, les cinq jours ouvrables de la semaine.</p>
+        <h3>Sur l'année</h3>
+        <p>Le document intitulé « <span class="btnPlanning">Planning idéal</span> » propose un emploi du temps de 1068 heures de formation allant du 1er /09/2021 au 30/06/2021, et respectant les congés du calendrier scolaire.</p>
+      </div>
+    </div>
+    <div class="row prerequis">
+      <div class="col-12">
+        <h2>Prérequis obligatoires<span class="text-yellow"> •</span></h2>
+      </div>
+      <div class="col-6 col-lg-3 text-center">
+        <img src="{{ asset('assets/img/front/icone_planning.png') }}" srcset="{{ asset('assets/img/front/icone_planning@2x.png')}} 2x, {{ asset('assets/img/front/icone_planning@3x.png')}} 3x" alt="planning">
+        <p class="text-center"><span class="font-bold">1•</span> Mise en place d’un <span class="font-bold">planning quotidien</span> à respecter scrupuleusement </p>
+      </div>
+      <div class="col-6 col-lg-3 text-center">
+        <img src="{{ asset('assets/img/front/icone_modelevivant.png') }}" srcset="{{ asset('assets/img/front/icone_modelevivant@2x.png')}} 2x, {{ asset('assets/img/front/icone_modelevivant@3x.png')}} 3x" alt="Modele vivant">
+        <p class="text-center"><span class="font-bold">2•</span> Participer à des séances de <span class="font-bold">modèle vivant</span> au moins une fois par semaine</p>
+      </div>
+      <div class="col-6 col-lg-3 text-center">
+        <img src="{{ asset('assets/img/front/icone_croquis.png') }}" srcset="{{ asset('assets/img/front/icone_croquis@2x.png')}} 2x, {{ asset('assets/img/front/icone_croquis@3x.png')}} 3x" alt="Croquis">
+        <p class="text-center"><span class="font-bold">3• Pratique quotidienne de croquis</span> sur carnets : croquis en extérieurs, dessins d’observation, paysages, perspectives, dessin d’imagination…</p>
+      </div>
+      <div class="col-6 col-lg-3 text-center">
+        <img src="{{ asset('assets/img/front/icone_autoformation.png') }}" srcset="{{ asset('assets/img/front/icone_autoformation@2x.png')}} 2x, {{ asset('assets/img/front/icone_autoformation@3x.png')}} 3x" alt="autoformation">
+        <p class="text-center"><span class="font-bold">4• S’autoformer à certains logiciels</span> de base utilisés pour le film d’animation tels que : Photoshop, Première, TOONBOOM Storyboard Pro, Audition, TVpaint.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row bg-yellow h-20">
+
+  </div>
+  <div class="row bg-crayonne">
+    <div class="container">
+      <div class="row">
+        <div class="col-auto tabHide">
+          <img src="{{ asset('assets/img/front/dessin_rouages.png') }}" srcset="{{ asset('assets/img/front/dessin_rouages@2x.png')}} 2x, {{ asset('assets/img/front/dessin_rouages@3x.png')}} 3x" alt="dessin">
+        </div>
+        <div class="col apostrophe">
+          <p>Je porterai un regard constant avec des retours réguliers sur les pratiques de dessin de modèle vivant, croquis et j’apporterai une aide en cas de problèmatiques rencontrées sur les logiciels.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container prof">
+  <div class="row">
+    <div class="col-12">
+      <p class="overTitle text-blue">votre professeur</p>
+      <h2>Qui suis-je ?<span class="text-yellow"> •</span></h2>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="quisuisje">
+      <div class="autoportrait">
+        <img src="{{ asset('assets/img/front/autoportrait.jpg') }}" srcset="{{ asset('assets/img/front/autoportrait@2x.jpg')}} 2x" alt="alexis madrid">
+      </div>
+      <div class="bg-darkGrey carouselContainer">
+        <p class="text-yellow">Alexis Madrid</p>
+        <div class="owl-carousel madridCarousel owl-theme">
+          <div class="item">
+            <h3>1986</h3>
+             <p>Cofondateur de FLIP-BOOK, Bordeaux, association 1901 pour la promotion du cinéma d’animation.</p>
+          </div>
+          <div class="item">
+            <h3>1987</h3>
+            <p>1er poste d’animateur traditionnel à JINGLE, Angoulême.</p>
+          </div>
+          <div class="item">
+            <h3>1989</h3>
+            <p>Arrivée à LA FABRIQUE (Montpellier) au poste d’animateur traditionnel pour 8 ans.</p>
+          </div>
+          <div class="item">
+            <h3>1998</h3>
+            <p>1er poste de storyboarder à ALPHANIM, Paris (futur GAUMONT Animation).</p>
+          </div>
+          <div class="item">
+            <h3>2001</h3>
+            <p>Arrivée à l’EMCA, Angoulême comme formateur en animation traditionnelle durant 20 ans.</p>
+          </div>
+          <div class="item">
+            <h3>2011</h3>
+            <p>Poste de lead storyboard sur long métrage d’animation COULEUR DE PEAU MIEL.</p>
+          </div>
+          <div class="item">
+            <h3>2017</h3>
+            <p>Réalisation (en cours) du court-métrage DUEL À ÉTRETAT.</p>
+          </div>
+        </div>
+        <div class="bandSquareContainer">
+          <div class="squareBand">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid videoContainer">
+  <div class="videoDot"></div>
+  <div class="row">
+    <div class="container">
+      <div class="col-12">
+        <p class="overTitle text-blue">une question ?</p>
+        <h2>Me contacter<span class="text-yellow"> •</span></h2>
+      </div>
+      <div class="col-12 video text-right">
+        <p>Travaux d’élèves sur les exercices proposés</p>
+        <video muted controls>
+          <source src="{{ asset('assets/video/montage_travaux_eleves.mp4') }}"
+          type="video/mp4">
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid contact" id="contact">
+  <div class="row bg-darkGrey ">
+    <div class="container formContact">
+      <div class="row">
+        {% for flashMessage in app.session.flashbag.get('success') %}
+             <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+            <span class="alert-text">{{ flashMessage|raw }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+         {% endfor %}
+      </div>
+      {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-4 inputContainer">
+                {{ form_widget(form.lastname) }}
+            </div>
+            <div class="col-12 col-lg-4 inputContainer">
+                {{ form_widget(form.firstname) }}
+            </div>
+            <div class="col-12 col-lg-4 inputContainer">
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="row contactSelect">
+          <div class="col-12">
+            {{ form_widget(form.select) }}
+          </div>
+        </div>
+        <div class="row messageInput">
+          <div class="col-12">
+            {{ form_widget(form.message) }}
+          </div>
+        </div>
+        <div class="row contactVideo">
+          <div class="col-12 text-center">
+            {{ form_widget(form.video) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" name="button" class="cstSubmit">envoyer</button>
+          </div>
+        </div>
+      {{ form_end(form) }}
+
+    </div>
+  </div>
+</div>
+<div class="popUpPlanning">
+  <div class="popUpClose">
+    <span></span>
+    <span></span>
+  </div>
+  <img src="{{ asset('assets/img/front/PLANNING_IDEAL_PREPA.jpg') }}" alt="planning">
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+{{ parent()}}
+
+  {% if anchor is defined %}
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+            if(document.getElementById("{{anchor}}")){
+                location.href = "#{{anchor}}"
+            }
+        });
+  </script>
+  {% endif %}
+{% endblock %}

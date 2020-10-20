@@ -1,0 +1,249 @@
+ /* --------- GENERAL STYLING ---------------- */
+body
+{
+    background-color: rgb(255, 255, 255) !important;
+
+}
+.bg-default {
+    background-color:  rgba(26, 26, 26, 0.96) !important;
+}
+.bg-blue {
+    background-color: #1b148c !important;
+}
+.bg-orange, .bg-light-orange {
+    background-color: #ff9700 !important;
+}
+.bg-light-blue {
+ background-color: #1179eb !important;
+}
+
+.bg-gradient-primary{
+    background-color: rgba(26, 26, 26, 0.96) !important;
+
+}
+.text-blue {
+    color: #1179eb; !important;
+}
+.nav-link.active {
+    background: rgba(17, 121, 235, 0.06) !important;
+}
+
+.btn-primary, .page-link:active {
+    background-color: #1179eb !important;
+    border-color: #1179eb !important;
+    color:  white !important;
+}
+ .btn-primary:hover {
+     color: rgb(53, 53, 57) !important;
+     border-color: rgb(244, 247, 250) !important;
+     background-color: rgb(246, 249, 253) !important;
+ }
+ .btn-secondary {
+     background-color: #fff !important;
+     border-color: #ff9700 !important;
+     transition: all ease .5s !important;
+     box-shadow: 0 4px 6px rgba(255, 151, 0, 0.18) !important;
+     position: relative !important;
+ }
+ .btn-secondary:hover {
+     background-color: #ff9700 !important;
+     border-color: #ff9700 !important;
+     color: #fff !important;
+ }
+
+
+ .thead-light th {
+     color: #010202 !important;
+     background-color: rgba(17, 121, 235, 0.06) !important;
+ }
+
+ .fill-default {
+     fill: rgba(26, 26, 26, 0.96) !important;
+ }
+ .bg-image {
+     background-image:url("../img/front/dessin_accueil@3x.png") !important;
+     background-repeat: no-repeat !important;
+     background-size: cover !important;
+     background-position: top left !important;
+ }
+ .progress-bar {
+     background-color: #1179eb !important;
+ }
+ .card , .btn{
+     border-radius: 0 !important;
+ }
+
+ .card-body {
+     background-color: rgba(17, 121, 235, 0.05) !important;
+ }
+
+.btn-main, .btn-secondary-small, .btn-main-orange {
+    transition: all ease .5s !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    display: inline;
+}
+ .btn-main-small, .btn-main-orange {
+     transition: all ease .5s !important;
+     position: relative !important;
+     z-index: 1000 !important;
+     display: inline;
+     padding: 0.4rem;
+ }
+ .btn-main::after, .btn-main-small::after, .btn-secondary-small::after, .btn-main-orange::after  {
+     content: "";
+     position: absolute !important;
+     width: 100%;
+     height: 100%;
+     background-image: url('../img/front/hachures_bleues.png');
+     background-repeat: no-repeat;
+     background-size: cover;
+     top: 15px;
+     left: -15px;
+     z-index: -1 !important;
+     transition: all ease .5s;
+ }
+.btn-main-orange{
+    background-color: #ff9700 !important;
+    color: white;
+}
+ .btn-main:hover,  .btn-main-small:hover,  .btn-main-orange:hover {
+     margin-left: -5px !important;
+ }
+ .btn-main:hover::after,  .btn-main-orange:hover::after {
+     top: 5px !important;
+     left: -5px !important;
+ }
+ .btn-secondary-small::after, .btn-main-orange::after {
+     background-image: url('../img/front/hachures_jaunes.png');
+ }
+ .btn-main-small::after, .btn-secondary-small::after {
+     top: 8px;
+     left: -8px;
+ }
+ .btn-main-small:hover::after, .btn-secondary-small:hover::after {
+     top: 5px !important;
+     left: -5px !important;
+ }
+
+ .patternBlue100{
+     background-image: url('../img/front/dotblue100_1px.png');
+     background-repeat: repeat;
+ }
+
+ .custom-file-input ~ .custom-file-label::after {
+     content: "Choisir" !important;
+ }
+
+ #subscriptionContainer {
+     background-image:url("../img/front/dessin-arbre@2x.png");
+     background-repeat: no-repeat;
+     background-size: contain;
+     background-position: bottom right;
+ }
+ .form-control {
+     border-radius: 0 !important;
+ }
+
+ #dashboardContainer .card-body {
+     background-color: white !important;
+ }
+ #mainHeader {
+     background-image:url("../img/front/dessin_accueil@3x.png") !important;
+     background-repeat: no-repeat !important;
+     background-size: 30% !important;
+     background-position: top left !important;
+ }
+ #exerciceBg {
+     background-image:url("../img/front/dessin_etudiant.png") !important;
+     background-repeat: no-repeat !important;
+     background-size: contain !important;
+     background-position: bottom right !important;
+     background-size: 26% !important;
+ }
+ .nav-link.active {
+     border-radius: 0 !important;
+ }
+ .cardformation{
+    transition: 1s box-shadow;
+ }
+
+.cardformation:hover {
+    box-shadow: 0 5px 35px 0px rgba(255, 151, 0, 0.70)!important;
+}
+
+ /* ---------- responsive ---------- */
+ @media (min-width: 2000px){
+     .exoDifficulty {
+         width: 50% !important;
+     }
+     #exerciceBg {
+        background-size: 22% !important;
+    }
+    .picto {
+        height: 4rem !important; 
+        width: 4rem !important;
+    }
+ }
+ @media (max-width: 1030px){
+     #preview_file {
+        height: 55vh !important;
+     }
+     #exerciceBg #exerciceRighContainer h3 {
+            font-size: 0.9rem !important;
+     }
+     #buttonmobile{
+        width: 100% !important;
+     }
+     #echangebox {
+        width: 100% !important;
+    }
+    .subtitle {
+        font-size: 0.9rem !important;
+    }
+    .picto {
+        height: 2rem !important; 
+        width: 2rem !important;
+    }
+
+ }
+ @media (max-width: 1000px){
+     #containerExerciceDifficulty {
+         margin-top: 2rem !important;
+         flex-direction: row !important;
+     }
+     #exerciceBg {
+        background-size: 50% !important;
+    }
+    #echangebox {
+        width: 100% !important;
+    }
+    .subtitle {
+        font-size: 0.9rem !important;
+    }
+    .picto {
+        height: 2rem !important; 
+        width: 2rem !important;
+    }
+
+ }
+
+ @media (max-width: 600px){
+     #courseContainer {
+        width: 100% !important;
+        text-align: center !important;
+    }
+     #courseContainer img {
+        display: none!important;
+     }
+     #courseContainer .col-12, #courseContainer .col-12 .courseDuration {
+         text-align: center !important;
+     }
+     #courseContainer .col-12 .courseDuration {
+         width: 100% !important;
+     }
+     #exerciceBg {
+        background-size: 100% !important;
+    }
+     
+ }

@@ -1,0 +1,13 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Envoi d'un message sur votre espace
+{%  endblock %}
+{% block content %}
+    <p>Bonjour,</p>
+    {% if isAdmin == true %}
+        <p>L'élève {{ student.firstname }} {{ student.lastname }} vient de vous envoyer un message via la plateforme.</p>
+    {% else %}
+        <p>Votre professeur vous a envoyé un commentaire sur l'exercice {{ exercice.title }}</p>
+    {% endif %}
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

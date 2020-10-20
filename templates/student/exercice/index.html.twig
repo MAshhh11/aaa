@@ -1,0 +1,301 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'student_exercice' %}
+{% set submenu = 'student_exercice' %}
+
+{% set page_name = 'Exercice '~exercice.title %}
+
+{% set breadcrumbs = [
+    {"title": "Ma formation", 'url' : ""},
+    {"title": page_name, 'url' : ""},
+] %}
+
+{% block body %}
+    <div class="card shadow" id="exerciceBg">
+        <div class="card-header border-0 mb-3">
+            <div class='row align-items-center'>
+                <div class="col-md-6">
+                    <h3 class="mb-0 text-blue" style="font-size: 1.8rem">{{page_name}} <span class="text-yellow"> •</span></h3>
+                </div>
+                <div class="col-md-2 text-right">
+                    <h3 class="mb-0">{{exercice.duration}}</h3>
+                </div>
+                <div class="col-md-4 text-center d-flex justify-content-end align-items-center">
+                    {% if previous in locked or previous == 0 %}
+                        <p>Vous n'avez pas encore  <br/> débloqué le prochain exercice !</p>
+                    {% elseif previous != exercice.id %}
+                        <a href="{{ path("student_exercice", {id : previous} ) }}" class="btn btn-primary btn-main"><i class="fas fa-caret-left"></i> Exercice précédent</a>
+                    {% endif %}
+                    {% if next in locked or next == 0 %}
+                        <p>Vous n'avez pas encore  <br/> débloqué le prochain exercice !</p>
+                    {% elseif next != exercice.id %}
+                    <a href="{{ path("student_exercice", {id : next} ) }}" class="btn btn-primary btn-main">Exercice suivant <i class="fas fa-caret-right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid d-flex flex-row my-4 mx-2">
+            <div class="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group" id="presentation_files">
+                    {% if files is not empty %}
+                    {% for file in files %}
+                    {% if file.isPresentation == true %}
+                    <button type="button" class="btn btn-primary btn-main btn-toggle" value="{{ exercice.id }}/{{ file.file }}">{{ file.filename }}</button>
+                    {% endif %}
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group" id="exercice_files">
+                    {% if file.isPresentation == false %}
+                    <button type="button" class="btn btn-secondary btn-toggle btn-main-orange" value="{{ exercice.id }}/{{ file.file }}">{{ file.filename }}</button>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row d-flex flex-row w-100 h-100">
+                {% if files %}
+                <div class="col-12 col-lg-8 mb-2 h-100 pr-0" id="preview_file" style="height: 55vh !important;">
+                    <object type="application/pdf" width="100%" height="100%" id="preview_file" data="{{ asset('../uploads/exercices/exercice_') }}{{ exercice.id }}/{{ files[0].file }}#view=FitH">
+                        <param name="src" value="{{asset('../uploads/exercices/exercice_') }}{{ exercice.id }}/{{ files[0].file }}">
+                        <p>
+                            <a href="{{ path('download_file', {id : exercice.id, filename : files[0].filename})  }}" />Cliquez ici pour télécharger le document.</a>
+                        </p>
+                    </object>
+                </div>
+                <div class="col-12 col-lg-1 d-flex flex-column justify-content-start mb-5 pl-0 h-25" id="containerExerciceDifficulty">
+                    <div class="col-lg-12 col-6 px-0 exoDifficulty" style="max-width: 70%">
+                        <div class="py-2 d-flex flex-column text-center" style="background-color: #1b148c !important;">
+                            <div style="height: 2rem;">
+                                <img src="{{ asset('assets/img/front/jours.png') }}" alt="icone_bulle" class="w-auto h-100">
+                            </div>
+                            <div style="height: 2rem;">
+                                <h2 class="text-white">{{ exercice.duration }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-6 px-0 exoDifficulty" style="max-width: 70%">
+                        <div class="py-2 d-flex flex-column text-center" style ="background-color: #1179eb !important;">
+                            <div style="height: 2rem;">
+                                <img src="{{ asset('assets/img/front/difficulte.png') }}" alt="icone_bulle" class="w-auto h-100">
+                            </div>
+                            <div style="height: 2rem;">
+                                <h2 class="text-white">{{ exercice.difficulty }}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-12 col-lg-3" id="exerciceRighContainer">
+                 {# echange av professeur ancre #}
+                <div class="row">
+                    <div class="card w-100" style="box-shadow: 2px 5px 5px lightgrey;">
+                            <div class="card-header text-center">
+                                <a href="#echangesavecprof"><div style="height: 2rem !important;">
+                        <img src="{{ asset('assets/img/front/icone_debrief.png') }}" alt="icone_bulle" class="w-auto h-100">
+                        </div><h3 class="mb-0">Echanges avec mon professeur</h3></a>
+                            </div>
+                    </div>
+                </div>
+                {# echange fin #}
+                    {% if technicalDocuments %}
+                    <div class="row mt-1">
+                        <div class="card w-100" style="box-shadow: 2px 5px 5px lightgrey;">
+                            <div class="card-header text-center">
+                                <h3>Documents Techniques</h3>
+                            </div>
+                            <div class="card-body">
+                                <ul class="d-flex align-items-center">
+                                    {% for document in technicalDocuments %}
+                                        <li class="text-yellow"><a href="{{ path('technical_doc_view', {id:document.id}) }}" target="_blank">{{ document.file }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row mt-5">
+                        <div class="card w-100" style="box-shadow: 2px 5px 5px lightgrey;">
+                            <div class="card-header text-center d-flex flex-col justify-content-center align-items-center">
+                                <div style="height: 2rem !important;">
+                                    <img src="{{ asset('assets/img/front/icone_corrige.png') }}" alt="icone_bulle" class="w-auto h-100">
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="mb-0">J'ai terminé mon exercice </h3>
+                                    <p class="p-1">C'est ici pour envoyer votre fichier !</p>
+                                </div>
+                            </div>
+                            {% if alreadySent is not null and alreadySent.isCorrect is null %}
+                            <div class="card-body text-center">
+                             <p class="font-weight-bold">Votre exercice va bientôt être corrigé !</p>
+                            </div>
+                            {% elseif alreadySent is not null and alreadySent.isCorrect == false and alreadySent.isSent == true %}
+                            <div class="card-body text-center">
+                                <p class="font-weight-bold">Votre exercice a été corrigé mais n'a pas été valdié!</p>
+                                <form action="{{ path('submit_exercice') }}" enctype="multipart/form-data" class="w-100" method="post">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input sr-only" id="validatedCustomFile" required name="video_file">
+                                        <label class="custom-file-label " for="validatedCustomFile">Choisir un fichier...</label>
+                                        <div class="invalid-feedback">Fichier non valide</div>
+                                    </div>
+                                    <input type="hidden" id="{{ exercice.id }}" value="{{ exercice.id }}" name="exercice">
+                                    <div class="form-group text-center mt-2">
+                                        <button type="submit" class="btn btn-primary form-control w-50">
+                                            Envoyer </button>
+                                    </div>
+                                </form>
+                            </div>
+                            {% elseif alreadySent is not null and alreadySent.isCorrect == true %}
+                                <div class="card-body text-center">
+                                    <p class="font-weight-bold"><i class="fas fa-check-circle"></i> Votre exercice a été corrigé et validé! <br>Rendez-vous à l'exercice suivant !</p>
+                                </div>
+                            {% else %}
+                            <div class="card-body">
+                                <form action="{{ path('submit_exercice') }}" enctype="multipart/form-data" class="w-100" method="post">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input sr-only col-12" id="validatedCustomFile" required name="video_file">
+                                        <label class="custom-file-label col-12" for="validatedCustomFile"></label>
+                                        <div class="invalid-feedback">Fichier non valide</div>
+                                    </div>
+                                    <input type="hidden" id="{{ exercice.id }}" value="{{ exercice.id }}" name="exercice">
+                                    <div class="form-group text-center mt-2">
+                                        <button type="submit" class="btn btn-primary form-control w-75">
+                                            Envoyer</button>
+                                    </div>
+                                </form>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <div class="container-fluid">
+            <div class="row mt-5">
+            <div id="echangebox" class="card w-75 m-auto">
+                <div id="echangesavecprof" class="card-header bg-darkBlue text-center d-flex flex-col justify-content-center align-items-center">
+                    <div style="height: 2rem !important;">
+                        <img src="{{ asset('assets/img/front/icone_debrief.png') }}" alt="icone_bulle" class="w-auto h-100">
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="mb-0">Echanges avec mon professeur</h3>
+                    </div>
+                </div>
+                <div class="card-body" id="commentContainer" style="font-size: 0.5rem!important;">
+                    <input type="hidden" value="{{ currentUser.firstname }}" id="userFirstname">
+                    <input type="hidden" value="{{ currentUser.lastname }}" id="userLastname">
+                    {% for comment in comments %}
+                        <div class="card text-sm">
+                            <div class="card bg-white my-0 d-flex flex-column">
+                                <div class="row col-12 my-1 border-bottom">
+                                    <div class="col-6"><p class="text-left font-weight-bold my-0" style="font-size: 0.8rem!important;">{{ comment.user.firstname }} {{ comment.user.lastname }}</p></div>
+                                    <div class="col-6"><p class="text-right my-0" style="font-size: 0.7rem!important;"> {{ comment.createdAt|date('d/m/Y') }}</p></div>
+                                </div>
+                                <div class="row col-12">
+                                    <div class="col-md-12"><p style="font-size: 0.9rem!important;">{{ comment.comment }}</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="card bg-white p-3">
+                        <form method="" action="" id="commentForm">
+                            <div class="form-group">
+                                <textarea name="comment" class="form-control" id="comment" placeholder="Ecrivez votre commentaire ici"></textarea>
+                                <input type="hidden" value="{{ exercice.id }}" id="exerciceId">
+                            </div>
+                            <div class="form-group text-center">
+                                <button id="buttonmobile" type="submit" class="btn btn-primary form-control w-50 ">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+    if(document.querySelector('.custom-file-input')  ){
+        document.querySelector('.custom-file-input').addEventListener('change',function(e){
+            var fileName = document.getElementById("validatedCustomFile").files[0].name;
+            var nextSibling = e.target.nextElementSibling
+            nextSibling.innerText = fileName
+        })
+    }
+
+    //change preview file
+    $('.btn-toggle').click(function() {
+        let value = $(this).attr('value').split('/');
+        let id = value[0];
+        let filename = value[1];
+
+        $('#preview_file').empty();
+        $("<object type='application/pdf' width='100%' height='100%' id='preview_file' data='{{ asset('../uploads/exercices/')}}exercice_"+ id +"/"+ filename +"#view=FitH'>" +
+            "<param name='src' value='{{ asset('../uploads/exercices/')}}exercice_"+ id +"/"+ filename +"'>" +
+            "<p><a href='{{ asset('../uploads/exercices/')}}exercice_"+ id +"/" + filename + "/>click here to download the PDF file.</a></p></object>").appendTo($('#preview_file'));
+    })
+
+    // save comment
+    $('#commentForm').submit(function(e) {
+        e.preventDefault();
+        let message = $('#comment').val();
+        let exercice = $('#exerciceId').val();
+        let firstname = $('#userFirstname').val();
+        let lastname = $('#userLastname').val();
+        let d  = new Date();
+        let day,month
+        if( d.getDate().toString().length < 2) {
+            day = '0' + d.getDate()
+        } else {
+            day = d.getDate()
+        }
+        if( d.getMonth().toString().length < 2) {
+            month =  d.getMonth() + 1
+            month = '0' + month
+        } else {
+            month = d.getMonth() + 1
+        }
+
+
+
+        let date = day+ "/" + month + "/"+  d.getFullYear();
+        if(message.length > 3) {
+            $.ajax({
+                method: "POST",
+                url: "{{path("save_comment")}}",
+                data: { "message": message, 'exercice' : exercice},
+            })
+                .done(function( result ) {
+                    if(result === "ok") {
+                        $.notify({
+                            message: "Le commentaire a bien été enregistré"
+                        },{
+                            type: 'success',
+                            delay: 2000,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                        });
+
+                        $("#commentContainer .card:last").before("<div class='card text-sm'><div class='Card-body bg-white my-0 d-flex flex-column'><div class='row col-12 my-1 border-bottom'><div class='col-6'><p class='text-left font-weight-bold my-0' style='font-size: 0.8rem!important;'>" + firstname + ' '+ lastname +
+                            "</p></div><div class='col-6'><p class='text-right my-0' style='font-size: 0.7rem!important;'>" + date +"</p></div></div><div class='row p-3'><div class='col-md-12'><p>"+
+                            message +"</p></div></div></div></div>");
+                    }
+                });
+        }
+    });
+
+
+    </script>
+
+
+{% endblock %}
+

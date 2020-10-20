@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{% block title %}L’animateur autodidacte accompagné{% endblock %}</title>
+
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="L’animateur autodidacte accompagné">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.aaanim.fr/">
+  <meta property="og:site_name" content="L’animateur autodidacte accompagné">
+  <meta property="og:image" content="{{asset('assets/img/front/aaa.jpg')}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/all.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap/bootstrap.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.min.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/odometer-theme-default.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font.css')}}" />
+  <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}" />
+  {% block stylesheets %}{% endblock %}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('assets/favicon/favicon-16x16.png') }}" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ asset('assets/favicon/favicon-32x32.png') }}" sizes="32x32">
+  <link rel="manifest" href="{{ asset('assets/favicon/site.webmanifest') }}">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109287999-16"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109287999-16');
+  </script>
+
+  <script type="text/javascript">
+    var startTime = (new Date()).getTime();
+  </script>
+</head>
+<body>
+  <div class="loader">
+    <img src="{{ asset('assets/img/front/Marche_a_Caractere.gif')}}" alt="animation 2d de marche">
+  </div>
+  <div class="menuMobile">
+    <div class="closeMobile">
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menuMobileContainer">
+      <nav class="nav-mobile">
+        <ul>
+          <li><a href="{{ path('public_home') }}" class="{% if page is defined and page == "home" %}current{% endif %}">Accueil</a></li>
+          <li><a href="{{ path('public_formation') }}" class="{% if page is defined and page == "formation" %}current{% endif %}">Nos formations</a></li>
+          <li><a href="{{ path('public_animation') }}" class="{% if page is defined and page == "animation" %}current{% endif %}">Le secteur de l'animation</a></li>
+          <li><a href="{{ path('app_login') }}" class="{% if page is defined and page == "animation" %}current{% endif %}">Espace Etudiant</a></li>
+          <li class="mobileContact"><a href="{{ path('public_home') }}#contact">Contact</a></li>
+        </ul>
+        <ul class="nav-sociaux">
+          <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></i></a></li>
+          <li><a href="https://www.linkedin.com/in/aaanim-l-animateur-autodidacte-accompagn%C3%A9-8668b41b1/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="bandLeft bg-darkBlue"></div>
+  </div>
+  <div class="menuFix" id="menuFix">
+    <div class="bg-darkBlue">
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="logoFix">
+          <a href="{{ path('public_home') }}"><img src="{{ asset('assets/img/front/logoAnim.gif')}}" alt="animateur autodidacte accompagné"></a>
+        </div>
+        <div class="btnMenuFix">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="fix-nav">
+          <ul>
+            <li ><a href="{{ path('public_home') }}" class="{% if page is defined and page == "home" %}current{% endif %}">Accueil</a></li>
+            <li ><a href="{{ path('public_formation') }}" class="{% if page is defined and page == "formation" %}current{% endif %}">Nos formations</a></li>
+            <li ><a href="{{ path('public_animation') }}" class="{% if page is defined and page == "animation" %}current{% endif %}">Le secteur de l'animation</a></li>
+            <li><a href="{{ path('public_home') }}#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="fix-nav">
+          <ul>
+            <li class="align-self-right"><a href="{{ path('app_login') }}" class="{% if page is defined and page == "" %}current{% endif %}">Espace Etudiant</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="page">
+    <header id="header">
+      <div class="btnMenu bg-darkBlue">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container-fluid">
+        <div class="row bg-darkBlue headerBand">
+          <div class="col-12">
+            <h1 class="m-0"><img src="{{ asset('assets/img/front/logoAnim.gif')}}" alt="animateur autodidacte accompagné"></h1>
+            <div class="w-100 h-100 d-flex justify-content-end align-items-center" id="connexionNavContainer">
+              <img src="{{ asset('assets/img/front/icone_compte.png') }}" class="mr-2">
+              <a href="{{ path('app_login') }}" class="text-white mr-5">Espace Etudiant <br> > Je me connecte</a>
+            </div>
+          </div>
+        </div>
+        <div class="row bg-darkGrey headerBot">
+          <div class="col-3 headerLeft">
+            <nav class="main-nav">
+              <ul>
+                <li class="{% if page is defined and page == "home" %}current{% endif %}"><a href="{{ path('public_home') }}" >Accueil</a></li>
+                <li class="{% if page is defined and page == "formation" %}current{% endif %}"><a href="{{ path('public_formation') }}">Nos formations</a></li>
+                <li class="{% if page is defined and page == "animation" %}current{% endif %}"><a href="{{ path('public_animation') }}">Le secteur de l'animation</a></li>
+                <li><a href="{{ path('public_home') }}#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-12 col-lg-6 headerCenter">
+            <p class="text-yellow text-center">Vous voulez être animateur 2D ou storyboarder ?</p>
+            <div>c'est ICI !</div>
+          </div>
+          <div class="col-3 headerRight">
+            <ul class="nav-sociaux">
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="https://www.instagram.com/animateurautodidacteaccompagne/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/aaanim-l-animateur-autodidacte-accompagn%C3%A9-8668b41b1/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      {% block main %}{% endblock %}
+    </main>
+    <footer>
+      <div class="container-fluid">
+        <div class="row bg-darkGrey patternBlue">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-4 d-flex">
+                <ul class="navFooter">
+                  <li>L’Animateur Autodidacte Accompagné</li>
+                  <li><a href="{{ path('public_mentions_legales') }}">Mentions légales</a></li>
+                  <li><a href="{{ path('public_cgv') }}">cgv</a></li>
+                </ul>
+              </div>
+              <div class="col-12 col-md-3 offset-md-5 footerContact">
+                <ul class="navContact">
+                  <li class="text-center">Contact</li>
+                  <li class="text-center">
+                    <a href="mailto:3aanim@gmail.com"><i class="fas fa-envelope"></i></a>
+                  </li>
+                  <li class="text-center">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/animateurautodidacteaccompagne/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/aaanim-l-animateur-autodidacte-accompagn%C3%A9-8668b41b1/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row bg-yellow footerBand">
+          <div class="col-12">
+            <div class="logoFooter">
+              <img src="{{ asset('assets/img/front/logoAnim.gif')}}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('assets/js/owl.carousel.min.js')}}"></script>
+<script src="{{ asset('assets/js/all.min.js')}}"></script>
+<script src="{{ asset('assets/js/scrollSpy.min.js')}}"></script>
+<script src="{{ asset('assets/js/odometer.min.js')}}"></script>
+<script src="{{ asset('assets/js/main.js')}}"></script>
+{% block javascripts %}{% endblock %}
+</html>

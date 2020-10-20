@@ -1,0 +1,79 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'correction' %}
+{% set submenu = 'correction_index' %}
+
+{% set page_name = 'Exercices à corriger' %}
+    
+{% set breadcrumbs = [
+        {"title": "Suivi Elèves", 'url' : ""},
+        {"title": page_name, 'url' : ""},
+] %}
+
+{% block body %}
+    
+    <div class="card shadow">
+
+      <div class="card-header border-0">
+          <div class='row align-items-center'>
+              <div class="col">
+                  <h3 class="mb-0">{{page_name}}</h3>
+              </div>
+          </div>
+      </div>
+              
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush dataTable" id="dt_default">
+              <thead class="thead-light">
+                <tr role="row" class="filter">
+                    <td>
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control table-filter" id="col0_filter" data-filter="0">
+                                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control table-filter" id="col1_filter" data-filter="1">
+                                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-merge">
+                                <input type="text" class="form-control table-filter" id="col2_filter" data-filter="2">
+                                <div class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
+                  <tr>
+                      <th class="sorting">Nom</th>
+                      <th class="sorting">Prénom</th>
+                      <th class="sorting">Exercice</th>
+                      <th class="sorting">Date dépôt</th>
+                      <th style="width:150px;"></th>
+                  </tr>
+              </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+                    
+{% endblock %}
+
+{% block javascripts %}
+{{ parent()}}
+    <script>    
+        var tableUrl = "{{ path('correction_datas')}}";
+        var tableSortingDefault = [[3, "desc" ]];
+        var tableNotOrderable = [4];
+    </script>
+    {% include 'admin/components/js_datatable.html.twig' %}    
+{% endblock %}
+

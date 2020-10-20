@@ -1,0 +1,49 @@
+{% for flashMessage in app.session.flashbag.get('success') %}
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+    <span class="alert-text">{{ flashMessage|raw }}</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>     
+ {% endfor %} 
+ 
+ {% for flashMessage in app.session.flashbag.get('warning') %}
+     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span class="alert-icon"><i class="fas fa-exclamation-triangle"></i></span>
+    <span class="alert-text">{{ flashMessage|raw }}</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>     
+ {% endfor %} 
+
+ {% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <span class="alert-icon"><i class="ni ni-bell-55"></i></span>
+        <span class="alert-text">{{ flashMessage|raw }}</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>     
+ {% endfor %}
+ 
+ {% if form is defined and not form.vars.valid %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% for error in form.vars.errors %}
+            {% if error.message == "" %}Une erreur s'est produite{% else %}{{error.message}}{% endif %}<br/>
+        {% endfor %}
+        
+        {% for child in form.children %}
+            {% if child.vars.errors is defined and child.vars.errors != "" %}
+                {% for error in child.vars.errors %}
+                    "{{child.vars.label}}" : {% if error.message == "This value is not valid." %}Le format est incorrect{% else %}{{error.message}}{% endif %}<br/>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}

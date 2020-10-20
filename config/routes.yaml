@@ -1,0 +1,6 @@
+index:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: public_home
+        permanent: true

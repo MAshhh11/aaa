@@ -1,0 +1,13 @@
+{% extends 'emails/base.html.twig' %}
+{% block title %}
+    Confirmation de votre inscription à la formation {{ formation.title }}
+{%  endblock %}
+{% block content %}
+    <p>Bonjour {{ student.firstname }} {{ student.lastname }},</p>
+
+        <p>Votre inscription à la formation a bien été enregistrée,</p>
+        <p>Vous recevrez sous peu une facture par email.</p>
+        <p>Rendez-vous dès à présent sur votre espace en suivant le lien ci-dessous:</p>
+    <p class="text-center"><a href="https://aaanim.fr/admin/connexion">Cliquez ici !</a></p>
+{%  endblock %}
+{% block sign %}Alexis Madrid{% endblock %}

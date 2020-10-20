@@ -1,0 +1,24 @@
+###> symfony/framework-bundle ###
+/node_modules/*
+symfony.lock
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+/public/assets/uploads/*
+/public/jEA2FhtxrjW3EoYHSAV3TamGBSVqU1qS/*
+###< symfony/framework-bundle ###
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+###< OS generated files ###
+.DS_Store
+.DS_Store?
+###< OS generated files ###
+.idea

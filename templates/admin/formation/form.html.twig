@@ -1,0 +1,264 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'formations' %}
+{% set submenu = 'formations_formation' %}
+
+    {% if form.vars.value.id is not null %}
+        {% set page_name = 'Modification de la formation '~form.vars.value.title %}
+    {% else %}
+        {% set page_name = 'Création d\' une formation' %}
+    {% endif %}
+{% set breadcrumbs = [
+    {"title": "Formations", 'url' : ""},
+    {"title": page_name, 'url' : path('formation_index') },
+] %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate','class': 'needs-validation', 'autocomplete': 'off', 'enctype':'multipart/form-data'}}) }}
+
+    <div class="card bg-secondary shadow">
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{ page_name }}</h3>
+                </div>
+                <div class="col text-right">
+                    <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false"
+                            title="" data-original-title="Enregistrer le formulaire">
+                        <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    </button>
+                    {% if form.vars.value.id is not null %}
+                        <input type="hidden" value="{{ form.vars.value.id }}" id="formationId">
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger confirmDeleteBox"
+                           data-message="Souhaitez-vous supprimer définitivement cet Exercice ?<br/> Toutes les données rattachées à cet exercice seront automatiquement supprimées."
+                           data-token="{{ csrf_token('delete'~form.vars.value.id) }}"
+                           data-url="{{ path('exercice_delete', {'id': form.vars.value.id}) }}"><i
+                                    class="fa fa-trash"></i> Supprimer</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h6 class="heading-small text-muted mb-4"></h6>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ form_widget(form.title) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.duration) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.price) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_widget(form.isActive) }}
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-icon btn-success" type='submit'>
+                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                <span class="btn-inner--text">Enregistrer</span>
+            </button>
+
+            <a class="btn btn-icon btn-sm" href='{{ path("formation_index") }}'>
+                <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                <span class="btn-inner--text">Annuler</span>
+            </a>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">Cours rattachés à la formation</h3>
+                </div>
+                <div class="col text-right">
+                    <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false"
+                            title="" data-original-title="Enregistrer le formulaire">
+                        <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h6 class="heading-small text-muted mb-4 mt-4">Cours</h6>
+                    {% if courses|length > 0 %}
+                    <div class="mt-4" id="listAllCourses">
+                        {% for course in courses %}
+                        <div class="form-group col-lg-6">
+                        <label for="{{ course.title }}">{{ course.title }}</label>
+                        <input type="checkbox" value="{{ course.id }}" name="{{ course.title }}" class="select-course" {% if  course.id in checkCourses %} checked {% endif %}>
+                        </div>
+                        {% endfor %}
+                    </div>
+               </div>
+                <div class="col-lg-6">
+                    <ul id="listCourses">
+                        {% for course in courses %}
+                            {% if course.id in checkCourses %}
+                                <li class="list-group-item" data-id="{{ course.id }}">
+                                    <span class="fa fa-arrows-alt my-handle" aria-hidden="true"></span> <span class="ml-3">{{ course.title }}
+                               </span></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif%}
+        </div>
+
+        <div class="card-footer">
+            <button class="btn btn-icon btn-success" type='submit' id="save">
+                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                <span class="btn-inner--text">Enregistrer</span>
+            </button>
+
+            <a class="btn btn-icon btn-sm" href='{{ path("formation_index") }}'>
+                <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                <span class="btn-inner--text">Annuler</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="addAttachment" class="d-none">
+        <div class="row mt-3">
+            <div class="col-sm-6">
+                <input type="file" name="files[]" class="form-control"/>
+            </div>
+            <div class="col-sm-3">
+                <select name="select[]" id="1" class="form-control select-file-type">
+                    <option value="presentation">Fichier de présentation</option>
+                    <option value="exercice">Fichier d'exercice</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <a href="javascript:void(0);" class="btn btn-icon btn-danger removeAttachment"><i
+                            class="fa fa-trash"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <script>
+
+        $('#listCourses').sortable({
+            handle: '.my-handle',
+            animation: 150,
+        });
+
+        let allIds = [];
+
+        $('.select-course').change(function() {
+            if($(this).is(':checked')) {
+
+                allIds.push($(this).attr('value'));
+
+                if(!allIds.includes($(this).data('id')) ) {
+                    $('#listCourses').append(' <li class="list-group-item" data-id="' + $(this).attr('value') +
+                        '"> <span class="fa fa-arrows-alt my-handle" aria-hidden="true"></span> <span class="ml-3">'
+                        + $(this).attr('name') + '</span></li>');
+                }
+
+            }
+            if(!$(this).is(':checked')) {
+
+                let remove_item = $(this).attr('value');
+                allIds = $.grep( allIds, function (value) {
+                    return value != remove_item;
+                })
+                $('.list-group-item').each(function () {
+                    if($(this).data('id') == remove_item) {
+                        $(this).remove();
+                    }
+                });
+            }
+        });
+
+
+
+        $('#save').click(function() {
+            var order = null;
+            $('.list-group-item').each(function() {
+                var id = $(this).data('id');
+                order = order+id+'|';
+            });
+
+            let formation = $('#formationId').attr('value');
+
+            $.ajax({
+                method: "POST",
+                url: "{{path("course_formation_rank")}}",
+                data: { "order": order, "formation": formation},
+            })
+                .done(function( result ) {
+
+                    if(result === "ok") {
+                        $.notify({
+                            message: "L'ordre des cours a bien été sauvegardé"
+                        },{
+                            type: 'success',
+                            delay: 2000,
+                            placement: {
+                                from: "top",
+                                align: "center"
+                            },
+                        });
+                    }
+                    console.log(result);
+                    console.log('ok');
+                });
+
+        });
+
+
+    </script>
+    <script>
+        $("body").on("click", ".removeAttachment", function () {
+            $(this).parent().parent().remove();
+        });
+        $("body").on("click", ".removeAttachment", function () {
+            $(this).parent().parent().remove();
+        });
+
+        let i = 2;
+        $('#addAttachment').click(function () {
+            var html = $("#attachmentModel").html();
+            $("#listAttachments").prepend(html);
+
+            $('.select-file-type').last().attr('id', i);
+            i++;
+        });
+
+
+        $('#addExercice').click(function () {
+            var html = $("#attachmentModel").html();
+            $("#listAttachments").prepend(html);
+
+            $('.select-file-type').last().attr('id', i);
+            i++;
+        });
+
+
+
+    </script>
+{% endblock %}

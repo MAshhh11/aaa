@@ -1,0 +1,11 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block title %}
+Bonjour {{user.firstname}},
+{%  endblock %}
+
+{% block content %}
+Bienvenue sur la plateforme L'Animateur Autodidacte Accompagné !<br/><br/>
+Vous pouvez (ré)initialiser votre mot de passe sur le lien suivant :<br/>
+<a href="{{url}}">{{url}}</a>
+{%  endblock %}

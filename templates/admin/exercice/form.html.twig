@@ -1,0 +1,155 @@
+{% extends 'admin/base.html.twig' %}
+
+{% set menu = 'exercices' %}
+{% set submenu = 'exercices_create' %}
+
+    {% if form.vars.value.id is not null %}
+        {% set page_name = 'Modification de l\'exercice '~form.vars.value.title %}
+    {% else %}
+        {% set page_name = 'Création d\' un exercice' %}
+    {% endif %}
+    
+    {% set breadcrumbs = [
+        {"title": "Formations", 'url' : ""},
+        {"title": "Liste des Exercices", 'url' : path('exercice_index') },
+        {"title": page_name, 'url' : ""},
+    ] %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate','class': 'needs-validation', 'autocomplete': 'off', 'enctype':'multipart/form-data'}}) }}
+
+    <div class="card bg-secondary shadow">
+
+        <div class="card-header border-0">
+            <div class='row align-items-center'>
+                <div class="col">
+                    <h3 class="mb-0">{{ page_name }}</h3>
+                </div>
+                <div class="col text-right">
+                    <button class="btn btn-icon btn-success" type='submit' data-toggle="tooltip" data-animation="false"
+                            title="" data-original-title="Enregistrer le formulaire">
+                        <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                    </button>
+                    {% if form.vars.value.id is not null %}
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger confirmDeleteBox"
+                           data-message="Souhaitez-vous supprimer définitivement cet Exercice ?<br/> Toutes les données rattachées à cet exercice seront automatiquement supprimées."
+                           data-token="{{ csrf_token('delete'~form.vars.value.id) }}"
+                           data-url="{{ path('exercice_delete', {'id': form.vars.value.id}) }}"><i
+                                    class="fa fa-trash"></i> Supprimer</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <h6 class="heading-small text-muted mb-4"></h6>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    {{ form_widget(form.title) }}
+                </div>
+                <div class="col-lg-4">
+                    {{ form_widget(form.difficulty) }}
+                </div>
+
+            </div>
+
+            <h6 class="heading-small text-muted mb-4 mt-4">Documents</h6>
+
+            <a href="javascript:void(0);" class="btn btn-sm btn-neutral" id="addAttachment">Ajouter un document</a>
+
+            <div id="listAttachments"></div>
+
+            {% if attachments|length > 0 %}
+            <div class="mt-4">
+
+                <div class="table-responsive bg-white">
+                    <table class="table align-items-center table-flush table-striped table-hover table-actions">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>Fichiers</th>
+                            <th>Type de document</th>
+                            <th>Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for attachment in attachments %}
+                            <tr>
+                                <td><a href="{{ path('download_file_admin_exo', {id : form.vars.value.id,  filename : attachment.file})  }}" >{{ attachment.file }}</a></td>
+                                {% if attachment.isPresentation == false %}
+                                    <td>Exercice</td>
+                                {% else %}
+                                    <td>Présentation</td>
+                                {% endif %}
+                                <td>
+                                    <div class="custom-control custom-checkbox ">
+                                        <input type="checkbox" id="remove_attchments_{{ attachment.id }}" name="remove_attachments[]" class="custom-control-input form-check-input" value="{{ attachment.id }}">
+                                        <label class="custom-control-label form-check-label" for="remove_attchments_{{ attachment.id }}"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {% endif%}
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-icon btn-success" type='submit'>
+                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                <span class="btn-inner--text">Enregistrer</span>
+            </button>
+
+            <a class="btn btn-icon btn-sm" href='{{ path("exercice_index") }}'>
+                <span class="btn-inner--icon"><i class="fa fa-arrow-left"></i></span>
+                <span class="btn-inner--text">Annuler</span>
+            </a>
+        </div>
+    </div>
+
+        <div id="attachmentModel" class="d-none">
+            {% set  i = 1 %}
+            <div class="row mt-3">
+                <div class="col-sm-6">
+                    <input type="file" name="files[]" class="form-control"/>
+                </div>
+                <div class="col-sm-3">
+                    <select name="select[]" id="1" class="form-control select-file-type">
+                        <option value="presentation">Fichier de présentation</option>
+                        <option value="exercice">Fichier d'exercice</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <a href="javascript:void(0);" class="btn btn-icon btn-danger removeAttachment"><i
+                                class="fa fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $("body").on("click", ".removeAttachment", function () {
+            $(this).parent().parent().remove();
+        });
+
+        let i = 2;
+        $('#addAttachment').click(function () {
+            var html = $("#attachmentModel").html();
+            $("#listAttachments").prepend(html);
+
+            $('.select-file-type').last().attr('id', i);
+            i++;
+        });
+
+
+
+    </script>
+{% endblock %}
